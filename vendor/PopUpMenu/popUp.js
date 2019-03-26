@@ -254,11 +254,11 @@ function truckPopUpMenu () {
     function menuItemListener( link ) {
         console.log( "TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
         switch (link.getAttribute("data-action")) {
-            case 'Moscow': formatIdElement (taskItemInContextId, 'red', 'white', 'white');
+            case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', 'white', 'black'); // сделать голубым
             break;
-            case 'StPetersburg': formatIdElement (taskItemInContextId, 'yellow', 'purple', 'purple');
-            break;
-            case 'Regions': formatIdElement (taskItemInContextId, 'grey', 'black', 'white');
+            case 'Regions': formatIdElement (taskItemInContextId, '#11690e', 'black', 'black'); // сделать темно-зеленным
+                break;
+            case 'Pickup': formatIdElement (taskItemInContextId, 'yellow', 'purple', 'black');
         }
         toggleMenuOff();
         }

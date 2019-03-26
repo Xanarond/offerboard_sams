@@ -227,20 +227,15 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
     document.querySelector("#OUTDO" + TruckHour).appendChild(div);
     let TruckID = div.id;
 
-    div = document.createElement("div");
-    div.id = ID + "idFirstRow";
-    div.classList.add("firstRow");
-    document.getElementById(TruckID).appendChild(div);
+    // div = document.createElement("div");
+    // div.id = ID + "idFirstRow";
+    // div.classList.add("firstRow");
+    // document.getElementById(TruckID).appendChild(div);
 
-    let p = document.createElement("p");
-    p.classList.add("TruckID");
-    p.textContent = "№ "+ID;
-    document.getElementById(div.id).appendChild(p);
 
-    p = document.createElement("p");
-    p.classList.add("division");
-    p.textContent = division.replace(/ {1,}/g," ");
-    document.getElementById(TruckID).appendChild(p);
+    // p.classList.add("TruckID");
+    // p.textContent = "№ "+ID;
+    // document.getElementById(div.id).appendChild(p);
 
     p = document.createElement("p");
     p.classList.add("manifest");
@@ -295,6 +290,12 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
             opacity: 0.35,
             //iframeFix: true
         });
+
+        //Будущая анимация по выполнению заказов
+        // $($gallery).animate({backgroundColor: "#3737A2"}, 250)
+		// 	.animate({backgroundColor: "#FFFFFF"}, 250)
+		// 	.animate({backgroundColor: "#3737A2"}, 250)
+		// 	.animate({backgroundColor: "#FFFFFF"}, 250).mousemove();
 
         // Let the trash be droppable, accepting the gallery items
         $trash.droppable({

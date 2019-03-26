@@ -66,6 +66,10 @@ body {
     width: auto;
 }
 
+.manifest{
+    font-weight: bold;
+}
+
 .Truck:hover {
  border: 2px solid greenyellow !important;
  background-color: black !important;
