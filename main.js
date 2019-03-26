@@ -118,7 +118,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish" + (59 - i);
-        i = i * 1;
+        i = i;
         tr.appendChild(td);
     }
 
@@ -137,7 +137,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Truck waiting" + (59 - i);
-        i = i * 1;
+        i = i;
         tr.appendChild(td);
     }
 
@@ -156,7 +156,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Truck arrived" + (59 - i);
-        i = i * 1;
+        i *= 1;
         tr.appendChild(td);
     }
 
@@ -226,6 +226,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
 
     document.querySelector("#OUTDO" + TruckHour).appendChild(div);
     let TruckID = div.id;
+	let p = document.createElement("p");
 
     div = document.createElement("div");
     div.id = ID + "idFirstRow";
@@ -242,16 +243,21 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
     p.textContent = division.replace(/ {1,}/g," ");
     document.getElementById(TruckID).appendChild(p);
 
-    p = document.createElement("p");
-    p.classList.add("manifest");
-    if (manifest !== null) {
-    p.textContent = "Manifest: " + manifest;}
-    document.getElementById(TruckID).appendChild(p);
+	p = document.createElement("p");
+	p.classList.add("manifest");
+	if (manifest !== null) {
+		p.textContent = "Manifest: " + manifest;}
+	document.getElementById(TruckID).appendChild(p);
+
+	p = document.createElement("p");
+	p.classList.add("DO");
+	p.textContent = "DO: " + DO;
+	document.getElementById(div.id).appendChild(p);
 
     p = document.createElement("p");
-    p.classList.add("DO");
-    p.textContent = "DO: " + DO;
-    document.getElementById(div.id).appendChild(p);
+    p.classList.add("division");
+    p.textContent = division.replace(/ +/g," ");
+    document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
     p.classList.add("client");
@@ -284,7 +290,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
         var $gallery = $(".Truck"),
             $trash = $(".yardTableData");
 
-        // Let the gallery items be draggable
+		// Let the gallery items be draggable
         $($gallery).draggable({
             cancel: "a.ui-icon", // clicking an icon won't initiate dragging
             revert: "invalid", // when not dropped, the item will revert back to its initial position
@@ -318,9 +324,6 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
 
             $item.find("a.ui-icon-trash").remove();
             // console.log(target.id);
-
-            
-
         }
     });
 }
