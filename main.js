@@ -129,14 +129,14 @@ function redrawYardTable() {
     td = document.createElement("td");
     span = document.createElement("span");
     span.classList.add("tableBold");
-    span.textContent = "Truck waiting";
+    span.textContent = "Truck_waiting";
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
     for (let i = 1; i <= 29; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
-        td.id = "Truck waiting" + (59 - i);
+        td.id = "Truck_waiting" + (59 - i);
         i = i * 1;
         tr.appendChild(td);
     }
@@ -226,6 +226,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
 
     document.querySelector("#OUTDO" + TruckHour).appendChild(div);
     let TruckID = div.id;
+    let p = document.createElement("p");
 
     // div = document.createElement("div");
     // div.id = ID + "idFirstRow";
@@ -297,6 +298,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
 		// 	.animate({backgroundColor: "#3737A2"}, 250)
 		// 	.animate({backgroundColor: "#FFFFFF"}, 250).mousemove();
 
+
         // Let the trash be droppable, accepting the gallery items
         $trash.droppable({
             accept: ".Truck",
@@ -313,15 +315,10 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
             $item.append().appendTo(target).fadeIn(function () {
                 if (target.id = "GI") {
                 }
-                // $item
-                //     .animate({width: "48px"});
             });
 
             $item.find("a.ui-icon-trash").remove();
             // console.log(target.id);
-
-            
-
         }
     });
 }

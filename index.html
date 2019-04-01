@@ -71,7 +71,27 @@
 <script>
     redrawYardTable()
 </script>
+<button class="blink_on">Включить мигание</button>
+<button class="blink_off">Выключить мигание</button>
 
+
+<script>
+	$(".blink_on").click(function () {
+		if (($('td#Truck_waiting') !== null)){
+			$(".Truck").animate({backgroundColor: "#a2020e"}, 250)
+				.animate({backgroundColor: "#FFFFFF"}, 250)
+				.animate({backgroundColor: "#a2020e"}, 250)
+				.animate({backgroundColor: "#FFFFFF"}, 250);
+		}
+		else {
+
+        }
+	});
+
+	$(".blink_off").click(function () {
+		alert('Button off');
+	});
+</script>
 <script>
 
     /*jshint browser:true */
