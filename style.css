@@ -20,7 +20,12 @@ body {
 .timeTable {
     margin: 5px 10px 30px 10px;
 }
-
+.Truck_waiting {
+    border: #a2020e 10px solid;
+    text-align: center;
+    height: 6rem;
+    width: 3.4%;
+}
 .timeTableData {
     height: 8rem;
     vertical-align: top;

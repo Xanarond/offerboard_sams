@@ -135,9 +135,9 @@ function redrawYardTable() {
     // пустые ячейки
     for (let i = 1; i <= 29; i++) {
         td = document.createElement("td");
-        td.classList.add("yardTableData");
+        td.classList.add("Truck_waiting");
         td.id = "Truck_waiting" + (59 - i);
-        i = i * 1;
+        i *= 1;
         tr.appendChild(td);
     }
 
@@ -156,7 +156,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Truck arrived" + (59 - i);
-        i = i * 1;
+        i *= 1;
         tr.appendChild(td);
     }
 
