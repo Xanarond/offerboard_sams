@@ -233,7 +233,7 @@ function truckPopUpMenu () {
       * Sets for id element: backgroungColor, borderColor, fontColor
       * 
       * @param {*} id 
-      * @param {*} backGroundColor 
+      * @param backgroundColor
       * @param {*} borderColor 
       * @param {*} fontColor 
       */
@@ -258,7 +258,7 @@ function truckPopUpMenu () {
             break;
             case 'Regions': formatIdElement (taskItemInContextId, '#11690e', 'black', 'black'); // сделать темно-зеленным
                 break;
-            case 'Pickup': formatIdElement (taskItemInContextId, 'yellow', 'purple', 'black');
+            case 'Pickup': formatIdElement (taskItemInContextId, '#ffe800', 'purple', 'black');
         }
         toggleMenuOff();
         }

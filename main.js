@@ -129,13 +129,13 @@ function redrawYardTable() {
     td = document.createElement("td");
     span = document.createElement("span");
     span.classList.add("tableBold");
-    span.textContent = "Truck_waiting";
+    span.textContent = "Truck waiting";
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
     for (let i = 1; i <= 29; i++) {
         td = document.createElement("td");
-        td.classList.add("Truck_waiting");
+        td.classList.add("yardTableData");
         td.id = "Truck_waiting" + (59 - i);
         i *= 1;
         tr.appendChild(td);

@@ -62,8 +62,6 @@
         </li>
     </ul>
 </nav>
-
-
 <script src="main.js"></script>
 <script>
     redrawTimeTable()
@@ -73,24 +71,43 @@
 </script>
 <button class="blink_on">Включить мигание</button>
 <button class="blink_off">Выключить мигание</button>
+<div id="time-node"></div>
+<script>
+	var timeNode = document.getElementById('time-node');
+	function getCurrentTimeString() {
+		return new Date().toTimeString().replace(/ .*/, '');
+	}
+	setInterval(
+		() => timeNode.innerHTML = getCurrentTimeString(),
+		1000
+	);
+</script>
 
+
+<!--<script>$(".Truck").animate();-->
+<!--setTimeout(function(){-->
+	<!--$(".Truck").show(); setInterval(function(){-->
+		<!--$(".Truck").animate({backgroundColor: "#a2020e"})},500)},3000);-->
+<!--</script>-->
+
+<!--$("tr:has("#Truck_waiting")")-->
 
 <script>
-	$(".blink_on").click(function () {
-		if (($('td#Truck_waiting') !== null)){
-			$(".Truck").animate({backgroundColor: "#a2020e"}, 250)
-				.animate({backgroundColor: "#FFFFFF"}, 250)
-				.animate({backgroundColor: "#a2020e"}, 250)
-				.animate({backgroundColor: "#FFFFFF"}, 250);
-		}
-		else {
+$(".blink_on").click(function () {
+	$(".Truck").animate();
+	setTimeout(function(){
+		$("tr:has#Truck_waiting").show(); setInterval(function(){
+			$(".Truck").animate({backgroundColor: "#a2020e"})
+                .animate({backgroundColor: "#ffffff"})
+                .animate({backgroundColor: "#a2020e"})
+                .animate({backgroundColor: "#ffffff"})},500)},300);
+});
 
-        }
-	});
-
-	$(".blink_off").click(function () {
-		alert('Button off');
-	});
+$(".blink_off").click(function () {
+	setTimeout(function () {
+		$(".Truck").show();
+	})
+});
 
 
 </script>
