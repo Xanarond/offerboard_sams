@@ -99,7 +99,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish D+2" + (59 - i);
-        i = i * 1;
+        i = i;
         tr.appendChild(td);
     }
 
@@ -118,12 +118,13 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish" + (59 - i);
-        i = i * 1;
+        i = i;
         tr.appendChild(td);
     }
 
     // добавляем ряд - Truck waiting в timeTable
     tr = document.createElement("tr");
+    tr.classList.add("Truck_wait");
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Truck waiting"
     td = document.createElement("td");
@@ -162,6 +163,7 @@ function redrawYardTable() {
 
     // добавляем ряд - Loading в timeTable
     tr = document.createElement("tr");
+    tr.classList.add("Load");
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Loading"
     td = document.createElement("td");
@@ -175,7 +177,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Loading" + (59 - i);
-        i = i * 1;
+        i = i;
         tr.appendChild(td);
     }
 
@@ -194,7 +196,7 @@ function redrawYardTable() {
     for (let i = 1; i <= 1; i++) {
         td = document.createElement("td");
         td.id = "GI";
-        i = i * 1;
+        i = i;
         td.colSpan = "29";
 
         // внутрь кладем div
@@ -313,7 +315,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date) {
         // Truck drug function
         function drugTruck($item, target) {
             $item.append().appendTo(target).fadeIn(function () {
-                if (target.id = "GI") {
+                if (target.id === "GI") {
                 }
             });
 

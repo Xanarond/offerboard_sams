@@ -26,7 +26,7 @@ function truckPopUpMenu () {
         if ( el.classList.contains(className) ) {
             return el;
         } else {
-            while ( el = el.parentNode ) {
+            while ( el === el.parentNode ) {
                 if ( el.classList && el.classList.contains(className) ) {
                     taskItemInContextId = el.id;
                     return el;
@@ -254,18 +254,18 @@ function truckPopUpMenu () {
     function menuItemListener( link ) {
         console.log( "TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
         switch (link.getAttribute("data-action")) {
-            case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', 'white', 'black'); // сделать голубым
+            case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black'); // сделать голубым
             break;
-            case 'Regions': formatIdElement (taskItemInContextId, '#11690e', 'black', 'black'); // сделать темно-зеленным
+            case 'Regions': formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black'); // сделать темно-зеленным
                 break;
-            case 'Pickup': formatIdElement (taskItemInContextId, '#ffe800', 'purple', 'black');
+            case 'Pickup': formatIdElement (taskItemInContextId, '#ffe800', '#000000', 'black');
         }
         toggleMenuOff();
         }
+
 
     /**
      * Run the app.
      */
     init();
-
-};
+}

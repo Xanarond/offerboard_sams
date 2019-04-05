@@ -73,7 +73,7 @@
 <button class="blink_off">Выключить мигание</button>
 <div id="time-node"></div>
 <script>
-	var timeNode = document.getElementById('time-node');
+	let timeNode = document.getElementById('time-node');
 	function getCurrentTimeString() {
 		return new Date().toTimeString().replace(/ .*/, '');
 	}
@@ -93,20 +93,17 @@
 <!--$("tr:has("#Truck_waiting")")-->
 
 <script>
-$(".blink_on").click(function () {
-	$(".Truck").animate();
+	$(".blink_on").click(function () {
 	setTimeout(function(){
-		$("tr:has#Truck_waiting").show(); setInterval(function(){
-			$(".Truck").animate({backgroundColor: "#a2020e"})
+		 setInterval(function(){
+			$("tr.Truck_wait").animate({backgroundColor: "#a2020e"})
                 .animate({backgroundColor: "#ffffff"})
                 .animate({backgroundColor: "#a2020e"})
                 .animate({backgroundColor: "#ffffff"})},500)},300);
 });
 
 $(".blink_off").click(function () {
-	setTimeout(function () {
-		$(".Truck").show();
-	})
+		 $("tr.Truck_wait").stop().animate();
 });
 
 
