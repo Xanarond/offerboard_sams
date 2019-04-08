@@ -3,6 +3,7 @@
 // КОНСТАНТЫ
 const timeTable = document.querySelector("#timeTable");
 const yardTable = document.querySelector("#yardTable");
+const totalTable = document.querySelector("#totalTable");
 
 
 // чертим скелет 1 таблички - timeTable
@@ -210,6 +211,19 @@ function redrawYardTable() {
 
 }
 
+// function redrawtotalTable () {
+//     timeTable.innerHTML = null;
+//     // добавляем ряд - шапку в timeTable
+//     let tr = document.createElement("tr");
+//     timeTable.appendChild(tr);
+//     // добавляем заглавную ячейку = "OUT D/O"
+//     let td = document.createElement("td");
+//     let span = document.createElement("span");
+//     span.classList.add("tableBold");
+//     span.textContent = "Total Volume";
+//     td.appendChild(span);
+//     tr.appendChild(td);
+// }
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
 function addTruck(ID, division, DO, manifest, client, volume, time, date) {

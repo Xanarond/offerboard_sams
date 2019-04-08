@@ -33,12 +33,6 @@ body {
 .timeTable {
     margin: 5px 10px 30px 10px;
 }
-.yardTableData [id=Truck_waiting] {
-    border: #a2020e 10px solid;
-    text-align: center;
-    height: 6rem;
-    width: 3.4%;
-}
 .timeTableData {
     height: 8rem;
     vertical-align: top;
@@ -49,7 +43,11 @@ body {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
+#totalTable {
+    width: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
 .yardTableHead {
     height: 1.5rem;
 }
