@@ -59,6 +59,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableHead");
         let span = document.createElement("span");
+        td.colSpan = "2";
         span.classList.add("tableBold");
         span.textContent = "V-" + (59 - i);
         i = i;
@@ -77,7 +78,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Start" + (59 - i);
@@ -96,7 +97,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish D+2" + (59 - i);
@@ -115,7 +116,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish" + (59 - i);
@@ -135,7 +136,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Truck_waiting" + (59 - i);
@@ -154,7 +155,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Truck arrived" + (59 - i);
@@ -174,7 +175,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Loading" + (59 - i);
@@ -198,7 +199,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.id = "GI";
         i = i;
-        td.colSpan = "29";
+        td.colSpan = "58";
 
         // внутрь кладем div
         let div;
@@ -211,30 +212,17 @@ function redrawYardTable() {
 
 }
 
-// function redrawtotalTable () {
-//     timeTable.innerHTML = null;
-//     // добавляем ряд - шапку в timeTable
-//     let tr = document.createElement("tr");
-//     timeTable.appendChild(tr);
-//     // добавляем заглавную ячейку = "OUT D/O"
-//     let td = document.createElement("td");
-//     let span = document.createElement("span");
-//     span.classList.add("tableBold");
-//     span.textContent = "Total Volume";
-//     td.appendChild(span);
-//     tr.appendChild(td);
-// }
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
-function addTruck(ID, division, DO, manifest, client, volume, time, date) {
+function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
 
     let TruckDate = new Date((date-25569)*24*60*60*1000+time*24*60*60*1000-3*60*60*1000);
-
+    let TruckHour = TruckDate.getHours();
     let div = document.createElement("div");
+
     div.classList.add("Truck");
     div.id = "Truck_"+ID;
 
-    let TruckHour = TruckDate.getHours();
     TruckHour = TruckHour - 2;
     if (TruckHour < 0 ) {
         TruckHour += 24;

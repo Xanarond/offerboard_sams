@@ -70,10 +70,10 @@
 <script>
 	redrawTimeTable();
     redrawYardTable();
-    redrawtotalTable();
+    // redrawtotalTable();
 </script>
-<button class="blink_on">Включить мигание</button>
-<button class="blink_off">Выключить мигание</button>
+<button class="blink_on">Включить оповещение</button>
+<button class="blink_off">Выключить оповещение</button>
 <div id="time-node"></div>
 <script>
 	let timeNode = document.getElementById('time-node');
@@ -85,15 +85,12 @@
 		1000
 	);
 </script>
-
-
-<!--<script>$(".Truck").animate();-->
-<!--setTimeout(function(){-->
-	<!--$(".Truck").show(); setInterval(function(){-->
-		<!--$(".Truck").animate({backgroundColor: "#a2020e"})},500)},3000);-->
-<!--</script>-->
-
-<!--$("tr:has("#Truck_waiting")")-->
+<button class="test" style="font-size: 50px; margin-left: 10px">Test</button>
+<script>
+	$(".test").click(function () {
+		 console.log($("*").css({backgroundColor: "#a2020e"}));
+	})
+</script>
 
 <script>
 	$(".blink_on").click(function () {
@@ -108,8 +105,6 @@
 $(".blink_off").click(function () {
 		 $("tr.Truck_wait").stop().animate();
 });
-
-
 </script>
 <script>
 
