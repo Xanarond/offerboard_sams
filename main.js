@@ -28,7 +28,7 @@ function redrawTimeTable() {
         span = document.createElement("span");
         span.classList.add("tableBold");
         span.textContent = (24 - i).toString() + ":00";
-        i = i * 1;
+        i = i;
         td.appendChild(span);
         tr.appendChild(td);
     }
@@ -42,7 +42,7 @@ function redrawTimeTable() {
     }
     timeTable.appendChild(tr);
 }
-
+redrawTimeTable();
 
 // чертим скелет 2 таблички - yardTableData
 function redrawYardTable() {
@@ -136,9 +136,9 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-    for (let i = 1; i <= 58; i++) {
+     for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
-        td.classList.add("yardTableData");
+        td.classList.add("Truck_waiting");
         td.id = "Truck_waiting" + (59 - i);
         i *= 1;
         tr.appendChild(td);
@@ -211,7 +211,7 @@ function redrawYardTable() {
     }
 
 }
-
+redrawYardTable();
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
 function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
@@ -219,11 +219,14 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
     let TruckDate = new Date((date-25569)*24*60*60*1000+time*24*60*60*1000-3*60*60*1000);
     let TruckHour = TruckDate.getHours();
     let div = document.createElement("div");
+    let currentTime = new Date().getHours();
+
+    console.log(currentTime);
 
     div.classList.add("Truck");
     div.id = "Truck_"+ID;
 
-    TruckHour = TruckHour - 2;
+    TruckHour = TruckHour - 3;
     if (TruckHour < 0 ) {
         TruckHour += 24;
     }
@@ -283,9 +286,11 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
         // There's the gallery and the trash
         var $gallery = $(".Truck"),
             $trash = $(".yardTableData");
+        var $blink;
+            $blink = $(".Truck_waiting");
 
         // Let the gallery items be draggable
-        $($gallery).draggable({
+        $gallery.draggable({
             cancel: "a.ui-icon", // clicking an icon won't initiate dragging
             revert: "invalid", // when not dropped, the item will revert back to its initial position
             //containment: "document",
@@ -295,13 +300,6 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
             opacity: 0.35,
             //iframeFix: true
         });
-
-        //Будущая анимация по выполнению заказов
-        // $($gallery).animate({backgroundColor: "#3737A2"}, 250)
-		// 	.animate({backgroundColor: "#FFFFFF"}, 250)
-		// 	.animate({backgroundColor: "#3737A2"}, 250)
-		// 	.animate({backgroundColor: "#FFFFFF"}, 250).mousemove();
-
 
         // Let the trash be droppable, accepting the gallery items
         $trash.droppable({
@@ -314,11 +312,19 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
             }
         });
 
+        $blink.droppable({
+            accept: ".Truck",
+            classes: {
+                "ui-droppable-active": "ui-state-highlight"
+            },
+            drop: function (event, ui) {
+                drugTruck(ui.draggable, event.target);
+            }
+        });
         // Truck drug function
         function drugTruck($item, target) {
             $item.append().appendTo(target).fadeIn(function () {
-                if (target.id === "GI") {
-                }
+                if (target.id === "GI");
             });
 
             $item.find("a.ui-icon-trash").remove();

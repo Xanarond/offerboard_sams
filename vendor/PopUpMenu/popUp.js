@@ -207,7 +207,7 @@ function truckPopUpMenu () {
         window.onresize = function () {
             windowWidth = $(document).width();
             windowHeight = $(document).height();
-        }
+        };
 
         if ( (windowWidth - clickCoordsX) < menuWidth ) {
             menu.style.left = windowWidth - menuWidth + "px";
