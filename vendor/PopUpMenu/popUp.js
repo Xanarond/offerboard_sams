@@ -1,4 +1,4 @@
-function truckPopUpMenu () {
+function truckPopUpMenu (qualifiedName) {
 
     "use strict";
 
@@ -251,15 +251,16 @@ function truckPopUpMenu () {
      *
      * @param {HTMLElement} link The link that was clicked
      */
-    function menuItemListener( link ) {
-        console.log( "TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
+    function menuItemListener(link) {
         switch (link.getAttribute("data-action")) {
             case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black'); // сделать голубым
             break;
             case 'Regions': formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black'); // сделать темно-зеленным
                 break;
             case 'Pickup': formatIdElement (taskItemInContextId, '#ffe800', '#000000', 'black');
+            return link;
         }
+        console.log( "TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
         toggleMenuOff();
         }
 
@@ -268,4 +269,5 @@ function truckPopUpMenu () {
      * Run the app.
      */
     init();
+
 }

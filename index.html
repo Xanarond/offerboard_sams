@@ -44,6 +44,12 @@
     </div>
     <div class="totalTable">
     <table id="totalTable">
+        <tr>
+            <td><span class="tableBold">Total Volume</span></td><td class="yardTableData"></td>
+        </tr>
+        <tr>
+            <td><span class="tableBold">Total Trucks</span></td><td class="yardTableData"></td>
+        </tr>
     </table>
 </div>
 </div>
@@ -53,16 +59,13 @@
 <nav id="context-menu" class="context-menu">
     <ul class="context-menu__items">
         <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Moscow">
-                <i class="fa fa-eye"></i> МОСКВА (голубой) </a>
+            <a href="#" class="context-menu__link" data-action="Moscow">МОСКВА (голубой)</a>
         </li>
         <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Regions">
-                <i class="fa fa-times"></i> РЕГИОНЫ (темно-зеленый) </a>
+            <a href="#" class="context-menu__link" data-action="Regions">РЕГИОНЫ (темно-зеленый)</a>
         </li>
         <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Pickup">
-                <i class="fa fa-edit"></i> САМОВЫВОЗ (желтый) </a>
+            <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
         </li>
     </ul>
 </nav>
@@ -70,7 +73,7 @@
 <script>
 	redrawTimeTable();
     redrawYardTable();
-    // redrawtotalTable();
+    redrawtotalTable();
 </script>
 <button class="blink_on">Включить оповещение</button>
 <button class="blink_off">Выключить оповещение</button>
@@ -111,13 +114,6 @@ $(".blink_off").click(function () {
 });
 </script>
 <script>
-
-    /*jshint browser:true */
-    /* eslint-env browser */
-    /*global Uint8Array, console */
-    /*global XLSX */
-    /* exported b64it, setfmt */
-    /* eslint no-use-before-define:0 */
 	const X = XLSX;
 	let XW = {
 		/* worker message */
@@ -319,7 +315,6 @@ $(".blink_off").click(function () {
 
 
 truckPopUpMenu ();
-
 </script>
 
 

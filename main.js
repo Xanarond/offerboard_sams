@@ -28,7 +28,6 @@ function redrawTimeTable() {
         span = document.createElement("span");
         span.classList.add("tableBold");
         span.textContent = (24 - i).toString() + ":00";
-        i = i;
         td.appendChild(span);
         tr.appendChild(td);
     }
@@ -62,7 +61,6 @@ function redrawYardTable() {
         td.colSpan = "2";
         span.classList.add("tableBold");
         span.textContent = "V-" + (59 - i);
-        i = i;
         td.appendChild(span);
         tr.appendChild(td);
     }
@@ -82,7 +80,6 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Start" + (59 - i);
-        i = i;
         tr.appendChild(td);
     }
 
@@ -101,7 +98,6 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish D+2" + (59 - i);
-        i = i;
         tr.appendChild(td);
     }
 
@@ -120,7 +116,6 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Pick Finish" + (59 - i);
-        i = i;
         tr.appendChild(td);
     }
 
@@ -140,7 +135,6 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("Truck_waiting");
         td.id = "Truck_waiting" + (59 - i);
-        i *= 1;
         tr.appendChild(td);
     }
 
@@ -159,7 +153,6 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Truck arrived" + (59 - i);
-        i *= 1;
         tr.appendChild(td);
     }
 
@@ -179,7 +172,6 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableData");
         td.id = "Loading" + (59 - i);
-        i = i;
         tr.appendChild(td);
     }
 
@@ -198,7 +190,6 @@ function redrawYardTable() {
     for (let i = 1; i <= 1; i++) {
         td = document.createElement("td");
         td.id = "GI";
-        i = i;
         td.colSpan = "58";
 
         // внутрь кладем div
@@ -220,8 +211,9 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
     let TruckHour = TruckDate.getHours();
     let div = document.createElement("div");
     let currentTime = new Date().getHours();
-
-    console.log(currentTime);
+    let MblinkT = currentTime +3;
+    let RblinkT = currentTime +8;
+    console.log(currentTime, MblinkT, RblinkT);
 
     div.classList.add("Truck");
     div.id = "Truck_"+ID;

@@ -47,6 +47,11 @@ body {
     width: auto;
     border-collapse: collapse;
     border-spacing: 0;
+    margin: 15px 10px 30px 10px;
+}
+#totalTable td {
+    border: black 1px solid;
+    text-align: center;
 }
 .yardTableHead {
     height: 1.5rem;
@@ -245,24 +250,24 @@ div {
     }
 }
 
-/*@media  (min-width: 3800px) {*/
-    /*.timeTable{*/
-        /*font-size: 30px;*/
-        /*width: auto;*/
-    /*}*/
-    /*#timeTable{*/
-        /*width: auto;*/
-        /*font-size: 30px;*/
-    /*}*/
-    /*.yardTableHead{*/
-        /*font-size: 30px;*/
-        /*width: auto;*/
-    /*}*/
-    /*.yardTableData{*/
-        /*width: auto;*/
-        /*font-size: 30px;*/
-    /*}*/
-    /*.Truck p{*/
-        /*font-size: 30px;*/
-    /*}*/
-/*}*/
+@media  (min-width: 3800px) {
+    .timeTable{
+        font-size: 30px;
+        width: auto;
+    }
+    #timeTable{
+        width: auto;
+        font-size: 30px;
+    }
+    .yardTableHead{
+        font-size: 30px;
+        width: auto;
+    }
+    .yardTableData{
+        width: auto;
+        font-size: 30px;
+    }
+    .Truck p{
+        font-size: 30px;
+    }
+}
