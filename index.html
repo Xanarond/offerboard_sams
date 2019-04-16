@@ -33,7 +33,17 @@
 </nav>
 
 <div class="content">
-    <div class="timeTable">
+	<div class="totalTable">
+		<table id="totalTable">
+			<tr>
+				<td><span class="tableBold">Total Trucks</span></td><td class="totalTableData" id="totalT"></td>
+			</tr>
+			<tr>
+				<td><span class="tableBold">Total Volume</span></td><td class="totalTableData" id="totalV"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="timeTable">
         <table id="timeTable">
         </table>
     </div>
@@ -42,16 +52,6 @@
         <table id="yardTable">
         </table>
     </div>
-    <div class="totalTable">
-    <table id="totalTable">
-        <tr>
-            <td><span class="tableBold">Total Volume</span></td><td class="yardTableData"></td>
-        </tr>
-        <tr>
-            <td><span class="tableBold">Total Trucks</span></td><td class="yardTableData"></td>
-        </tr>
-    </table>
-</div>
 </div>
 
 
@@ -73,7 +73,6 @@
 <script>
 	redrawTimeTable();
     redrawYardTable();
-    redrawtotalTable();
 </script>
 <button class="blink_on">Включить оповещение</button>
 <button class="blink_off">Выключить оповещение</button>
@@ -208,7 +207,7 @@ $(".blink_off").click(function () {
 					if ((item[0] != null) && (item.length > 1)) {
 						// console.log(item);
 						// ВЫВОД объекта div truck
-						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6]);
+						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],item[8], item[9]);
 					}
 				});
 			if (typeof console !== 'undefined') console.log("Попытка обработки файла ", new Date());

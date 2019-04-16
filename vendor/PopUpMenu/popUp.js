@@ -1,4 +1,4 @@
-function truckPopUpMenu (qualifiedName) {
+function truckPopUpMenu () {
 
     "use strict";
 
@@ -253,9 +253,9 @@ function truckPopUpMenu (qualifiedName) {
      */
     function menuItemListener(link) {
         switch (link.getAttribute("data-action")) {
-            case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black'); // сделать голубым
+            case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black');
             break;
-            case 'Regions': formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black'); // сделать темно-зеленным
+            case 'Regions': formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black');
                 break;
             case 'Pickup': formatIdElement (taskItemInContextId, '#ffe800', '#000000', 'black');
             return link;

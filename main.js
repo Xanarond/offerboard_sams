@@ -3,7 +3,6 @@
 // КОНСТАНТЫ
 const timeTable = document.querySelector("#timeTable");
 const yardTable = document.querySelector("#yardTable");
-const totalTable = document.querySelector("#totalTable");
 
 
 // чертим скелет 1 таблички - timeTable
@@ -205,7 +204,7 @@ function redrawYardTable() {
 redrawYardTable();
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
-function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
+function addTruck(ID, division, DO, manifest, client, volume, time, date, totalVolume, totalTrucks) {
 
     let TruckDate = new Date((date-25569)*24*60*60*1000+time*24*60*60*1000-3*60*60*1000);
     let TruckHour = TruckDate.getHours();
@@ -213,7 +212,8 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
     let currentTime = new Date().getHours();
     let MblinkT = currentTime +3;
     let RblinkT = currentTime +8;
-    console.log(currentTime, MblinkT, RblinkT);
+    console.log(currentTime, MblinkT, RblinkT, TruckHour);
+     console.log(totalVolume, totalTrucks, client);
 
     div.classList.add("Truck");
     div.id = "Truck_"+ID;
@@ -226,7 +226,8 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
     document.querySelector("#OUTDO" + TruckHour).appendChild(div);
     let TruckID = div.id;
     let p = document.createElement("p");
-
+    let span = document.createElement("span");
+    let b = document.createElement("b");
     // div = document.createElement("div");
     // div.id = ID + "idFirstRow";
     // div.classList.add("firstRow");
@@ -274,7 +275,15 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, ) {
         TruckDate.getFullYear();
     document.getElementById(div.id).appendChild(p);
 
-    $(function () {
+    document.querySelector("#totalV").appendChild(b);
+    if (totalVolume !== null) {
+        b.textContent = totalVolume;}
+    document.querySelector("#totalT").appendChild(span);
+    if (totalTrucks !== null) {
+        span.textContent = totalTrucks;}
+
+
+    jQuery(function () {
         // There's the gallery and the trash
         var $gallery = $(".Truck"),
             $trash = $(".yardTableData");
