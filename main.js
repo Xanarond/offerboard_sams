@@ -14,6 +14,7 @@ function redrawTimeTable() {
     timeTable.appendChild(tr);
     // добавляем заглавную ячейку = "OUT D/O"
     let td = document.createElement("td");
+    td.classList.add("timeTableHead");
     td.rowSpan = "2";
     let span = document.createElement("span");
     span.classList.add("tableBold");
@@ -69,6 +70,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Pick Start"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     let span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "Pick Start";
@@ -87,6 +89,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Pick Finish D+2"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "Pick Finish D+2";
@@ -105,6 +108,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Pick Finish"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "Pick Finish";
@@ -124,6 +128,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Truck waiting"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "Truck waiting";
@@ -142,6 +147,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Truck arrived"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "Truck arrived";
@@ -161,6 +167,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Loading"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "Loading";
@@ -179,6 +186,7 @@ function redrawYardTable() {
     yardTable.appendChild(tr);
     // добавляем заглавную ячейку = "Loading"
     td = document.createElement("td");
+    td.classList.add("yardTableHead");
     span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "GI";

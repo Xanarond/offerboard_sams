@@ -31,15 +31,17 @@
         <span>Перетащите сюда xlsx файл...</span>
     </div>
 </nav>
-
 <div class="content">
+	<div class="logos">
+		<img src="img/logo-ss-sds.png" alt="">
+	</div>
 	<div class="totalTable">
 		<table id="totalTable">
 			<tr>
-				<td><span class="tableBold">Total Trucks</span></td><td class="totalTableData" id="totalT"></td>
+				<td class="totalTableHead"><span class="tableBold">Total Trucks</span></td><td class="totalTableData" id="totalT"></td>
 			</tr>
 			<tr>
-				<td><span class="tableBold">Total Volume</span></td><td class="totalTableData" id="totalV"></td>
+				<td class="totalTableHead"><span class="tableBold">Total Volume</span></td><td class="totalTableData" id="totalV"></td>
 			</tr>
 		</table>
 	</div>
@@ -76,6 +78,38 @@
 </script>
 <button class="blink_on">Включить оповещение</button>
 <button class="blink_off">Выключить оповещение</button>
+<button class="show_popup pal_btn" rel="popup1">Добавить палет</button>
+<div class="overlay_popup"></div>
+
+<script type="text/javascript">
+$('.show_popup').click(function() { // Вызываем функцию по нажатию на кнопку
+    var popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
+    $(popup_id).show(); // Открываем окно
+    $('.overlay_popup').show(); // Открываем блок заднего фона
+})
+$('.overlay_popup').click(function() { // Обрабатываем клик по заднему фону
+    $('.overlay_popup, .popup').hide(); // Скрываем затемнённый задний фон и основное всплывающее окно
+})
+</script>
+<div class="popup" id="popup1">
+  <div class="object">
+    <form action= "" method= "">
+      <p>Manifest: </p>
+      <p><input type= "text" name= "name"></p>
+      <p>DO: </p>
+      <p><input type= "text" name= "name"></p>
+      <p>Клиент: </p>
+      <p><input type= "text" name= "name"></p>
+      <p>Volume: </p>
+      <p><input type= "text" name= "name"></p>
+      <p>Время: </p>
+      <p><input type= "text" name= "name"></p>
+      <p>Дата: </p>
+      <p><input type= "text" name= "name"></p>
+      <input type= "submit" value= "Создать">
+    </form>
+  </div>
+</div>
 <div id="time-node"></div>
 <script>
 	let timeNode = document.getElementById('time-node');

@@ -10,6 +10,7 @@ body {
 
 .timeTableHead {
     height: 1.5rem;
+    background-color: #999999;
 }
 
 #timeTable td {
@@ -66,14 +67,27 @@ body {
     height: 6rem;
     width: 3.4%;
 }
+.totalTableHead{
+    background-color: #999999;
+}
 .totalTableData{
     height: 6rem;
     font-size: 50px;
 }
+img{
+    height: 300px;
+    width: 500px;
+}
+.logos{
+    padding: 10px;
+    display: inline-block;
+    padding-left: 1800px;
+    float: left;
+}
 .tableBold {
     font-weight: bold;
     letter-spacing: 0.08em;
-    font-size: 50px;
+    font-size: 43px;
     padding-left: 10px;
 }
 
@@ -161,6 +175,32 @@ body {
     color: #bbb
 }
 
+textarea {
+	width: 100%;
+	resize: none;
+}
+input, textarea {
+	color: #494949;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    background: #fff;
+    font-size: 14px;
+    margin: 0 0 10px;
+	padding: 5px;
+    width: 100%;
+	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+}
+
+input:focus {
+	border-color: #808080;
+	outline: none;
+}
+
+textarea:focus {
+	border-color: #808080;
+	outline: none;
+}
 /*Стили кнопок*/
 .blink_on{
     text-decoration: none;
@@ -193,6 +233,41 @@ blink_on:hover {
     color: #fff;
 }
 blink_on:hover:before {
+    left: 150px;
+    transition: .5s ease-in-out;
+}
+
+.pal_btn{
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 10px 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #6060cf;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: #6060cf;
+  transition: .2s ease-in-out;
+  font-size: 50px;
+}
+pal_btn:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(47, 83, 255, 0.1), rgba(93, 95, 255, 0.5));
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -8px;
+    left: -75px;
+    transform: skewX(-45deg);
+}
+
+pal_btn:hover {
+    background: #fe6637;
+    color: #fff;
+}
+pal_btn:hover:before {
     left: 150px;
     transition: .5s ease-in-out;
 }
@@ -239,6 +314,37 @@ div {
     display: block;
 }
 
+/* Окно */
+
+.overlay_popup {
+	display:none;
+	position:fixed;
+	z-index: 999;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	background:#000;
+	opacity:0.5;
+}
+
+.popup {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	margin:0 50% 0 50%;
+	width:50%;
+}
+
+/* Ещё немного стилей для popup окна */
+
+.object{
+	width: 500px;
+	height: 600px;
+	background-color: #eee;
+	padding: 50px 70px;
+}
+
 /*Адаптив*/
 
 @media (max-width: 450px) {
@@ -265,6 +371,7 @@ div {
     .yardTableHead{
         font-size: 30px;
         width: auto;
+        background-color: #999999;
     }
     .yardTableData{
         width: auto;
