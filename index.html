@@ -37,12 +37,26 @@
 	</div>
 	<div class="totalTable">
 		<table id="totalTable">
-			<tr>
-				<td class="totalTableHead"><span class="tableBold">Total Trucks</span></td><td class="totalTableData" id="totalT"></td>
-			</tr>
-			<tr>
-				<td class="totalTableHead"><span class="tableBold">Total Volume</span></td><td class="totalTableData" id="totalV"></td>
-			</tr>
+
+            <tr><td class="totalTableHead"><span class="tableBold">Total Trucks</span></td>
+				<td class="totalTableHead"><span class="tableBold">Total Volume</span></td>
+                <td class="totalTableHead"><span class="tableBold">Moscow Trucks</span></td>
+                <td class="totalTableHead"><span class="tableBold">Moscow Volume</span></td>
+                <td class="totalTableHead"><span class="tableBold">Region Trucks</span></td>
+                <td class="totalTableHead"><span class="tableBold">Region Volume</span></td>
+                <td class="totalTableHead"><span class="tableBold">Pickup Trucks</span></td>
+                <td class="totalTableHead"><span class="tableBold">Pickup Volume</span></td>
+            </tr>
+            <tr>
+            <td class="totalTableData" id="totalT"></td>
+            <td class="totalTableData" id="totalV"></td>
+            <td class="totalTableData" id="moscowT"></td>
+            <td class="totalTableData" id="moscowV"></td>
+            <td class="totalTableData" id="regionT"></td>
+            <td class="totalTableData" id="regionV"></td>
+            <td class="totalTableData" id="pickupT"></td>
+            <td class="totalTableData" id="pickupV"></td>
+        </tr>
 		</table>
 	</div>
 	<div class="timeTable">
@@ -69,6 +83,9 @@
         <li class="context-menu__item">
             <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
         </li>
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Late">ОПОЗДАВШИЙ</a>
+        </li>
     </ul>
 </nav>
 <script src="main.js"></script>
@@ -93,24 +110,28 @@ $('.overlay_popup').click(function() { // Обрабатываем клик по
 </script>
 <div class="popup" id="popup1">
   <div class="object">
-    <form action= "" method= "">
       <p>Manifest: </p>
-      <p><input type= "text" name= "name"></p>
+      <p><input type= "text" id="Manifest"></p>
       <p>DO: </p>
-      <p><input type= "text" name= "name"></p>
+      <p><input type= "text" id="DO"></p>
       <p>Клиент: </p>
-      <p><input type= "text" name= "name"></p>
+      <p><input type= "text" id="Client"></p>
       <p>Volume: </p>
-      <p><input type= "text" name= "name"></p>
+      <p><input type= "text" id="Volume"></p>
       <p>Время: </p>
-      <p><input type= "text" name= "name"></p>
+      <p><input type= "text" id="Time"></p>
       <p>Дата: </p>
-      <p><input type= "text" name= "name"></p>
-      <input type= "submit" value= "Создать">
-    </form>
+      <p><input type= "text" id="Date"></p>
+        <button class="create" style="font-size: 50px; margin-left: 10px">Test</button>
   </div>
 </div>
 <div id="time-node"></div>
+<script>
+    $('.create').click(function(){
+
+        $('#Manifest').attr('value');
+    });
+</script>
 <script>
 	let timeNode = document.getElementById('time-node');
 	function getCurrentTimeString() {
@@ -121,14 +142,11 @@ $('.overlay_popup').click(function() { // Обрабатываем клик по
 		1000
 	);
 </script>
-<button class="test" style="font-size: 50px; margin-left: 10px">Test</button>
 <script>
-    $(".test").click(function () {
             setInterval(function() {
-                $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity:'0.0'},300);
-                    setTimeout(function () {
-                        $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity:'1.0'},300);
-                    })
+                $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '0.0'}, 300).css('color', 'red');
+                setTimeout(function () {
+                    $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '1.0'}, 300);
                 })
             });
 </script>
@@ -241,7 +259,7 @@ $(".blink_off").click(function () {
 					if ((item[0] != null) && (item.length > 1)) {
 						// console.log(item);
 						// ВЫВОД объекта div truck
-						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],item[8], item[9]);
+						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],item[8], item[9], item[10], item[11],item[12], item[13], item[14],);
 					}
 				});
 			if (typeof console !== 'undefined') console.log("Попытка обработки файла ", new Date());

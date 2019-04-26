@@ -17,7 +17,6 @@ body {
     border: black 1px solid;
     text-align: center;
 }
-
 #time-node{
     padding: 15px;
     background: #212121;
@@ -25,7 +24,7 @@ body {
     display: inline-block;
     font-weight: bold;
     border-radius: 10px;
-    font-size: 50px;
+    font-size: 30px;
     width: 250px;
     text-align: center;
     margin-left: 10px;
@@ -56,6 +55,7 @@ body {
 }
 .yardTableHead {
     height: 1.5rem;
+    background-color: #999999;
 }
 
 #yardTable td {
@@ -72,22 +72,21 @@ body {
 }
 .totalTableData{
     height: 6rem;
-    font-size: 50px;
+    font-size: 30px;
 }
 img{
     height: 300px;
     width: 500px;
 }
 .logos{
-    padding: 10px;
     display: inline-block;
-    padding-left: 1800px;
+    padding: 10px 10px 10px 1800px;
     float: left;
 }
 .tableBold {
     font-weight: bold;
     letter-spacing: 0.08em;
-    font-size: 43px;
+    font-size: 30px;
     padding-left: 10px;
 }
 
@@ -215,7 +214,7 @@ textarea:focus {
     font-family: 'Montserrat', sans-serif;
     color: #6060cf;
     transition: .2s ease-in-out;
-    font-size: 50px;
+    font-size: 30px;
 }
 blink_on:before {
     content: "";
@@ -250,7 +249,7 @@ blink_on:hover:before {
   font-family: 'Montserrat', sans-serif;
   color: #6060cf;
   transition: .2s ease-in-out;
-  font-size: 50px;
+  font-size: 30px;
 }
 pal_btn:before {
     content: "";
@@ -285,7 +284,7 @@ pal_btn:hover:before {
     font-family: 'Montserrat', sans-serif;
     color: #a2020e;
     transition: .2s ease-in-out;
-    font-size: 50px;
+    font-size: 30px;
 }
 blink_off:before {
     content: "";

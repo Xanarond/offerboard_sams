@@ -212,7 +212,7 @@ function redrawYardTable() {
 redrawYardTable();
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
-function addTruck(ID, division, DO, manifest, client, volume, time, date, totalVolume, totalTrucks) {
+function addTruck(ID, division, DO, manifest, client, volume, time, date, totalVolume, totalTrucks, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume) {
 
     let TruckDate = new Date((date-25569)*24*60*60*1000+time*24*60*60*1000-3*60*60*1000);
     let TruckHour = TruckDate.getHours();
@@ -220,7 +220,9 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalV
     let currentTime = new Date().getHours();
     let MblinkT = currentTime +3;
     let RblinkT = currentTime +8;
+    // eslint-disable-next-line no-console
     console.log(currentTime, MblinkT, RblinkT, TruckHour);
+    // eslint-disable-next-line no-console
      console.log(totalVolume, totalTrucks, client);
 
     div.classList.add("Truck");
@@ -259,7 +261,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalV
 
     p = document.createElement("p");
     p.classList.add("client");
-    p.textContent = client.replace(/ {1,}/g," ");
+    p.textContent = client.replace(/ +/g," ");
     document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
@@ -283,13 +285,38 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalV
         TruckDate.getFullYear();
     document.getElementById(div.id).appendChild(p);
 
-    document.querySelector("#totalV").appendChild(b);
+    // Задание функций для Total Volume и Total Truck
+    document.querySelector( "#totalV").appendChild(b);
     if (totalVolume !== null) {
-        b.textContent = totalVolume;}
+      b.textContent = totalVolume;
+      }
     document.querySelector("#totalT").appendChild(span);
     if (totalTrucks !== null) {
         span.textContent = totalTrucks;}
-
+        document.querySelector( "#moscowT").appendChild(b);
+    if (totalVolume !== null) {
+          b.textContent = totalVolume;
+          }
+          document.querySelector( "#moscowV").appendChild(b);
+    if (totalVolume !== null) {
+            b.textContent = totalVolume;
+            }
+            document.querySelector( "#regionT").appendChild(b);
+    if (totalVolume !== null) {
+              b.textContent = totalVolume;
+              }
+              document.querySelector( "#regionV").appendChild(b);
+    if (totalVolume !== null) {
+                b.textContent = totalVolume;
+                }
+                document.querySelector( "#pickupT").appendChild(b);
+    if (totalVolume !== null) {
+                  b.textContent = totalVolume;
+                  }
+                  document.querySelector( "#regionV").appendChild(b);
+    if (totalVolume !== null) {
+                    b.textContent = totalVolume;
+                    }
 
     jQuery(function () {
         // There's the gallery and the trash

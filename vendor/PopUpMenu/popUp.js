@@ -106,6 +106,7 @@ function truckPopUpMenu () {
         clickListener();
         keyupListener();
         resizeListener();
+        // eslint-disable-next-line no-console
         console.log("PopUpMenu for class", taskItemClassName, "initialized");
     }
 
@@ -253,17 +254,23 @@ function truckPopUpMenu () {
      */
     function menuItemListener(link) {
         switch (link.getAttribute("data-action")) {
-            case 'Moscow': formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black');
-            break;
-            case 'Regions': formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black');
+            case 'Moscow':
+                formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black');
                 break;
-            case 'Pickup': formatIdElement (taskItemInContextId, '#ffe800', '#000000', 'black');
-            return link;
+            case 'Regions':
+                formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black');
+                break;
+            case 'Pickup':
+                formatIdElement (taskItemInContextId, '#ffe800', '#000000', 'black');
         }
-        console.log( "TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
+        // eslint-disable-next-line no-console
+        console.log("TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
         toggleMenuOff();
-        }
 
+        if (link.getAttribute("data-action") === 'Late'){
+
+        }
+    }
 
     /**
      * Run the app.
