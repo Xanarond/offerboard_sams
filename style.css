@@ -61,6 +61,7 @@ body {
 #yardTable td {
     border: black 1px solid;
     text-align: center;
+    width: 3.1em;
 }
 
 .yardTableData {
@@ -87,7 +88,7 @@ img{
     font-weight: bold;
     letter-spacing: 0.08em;
     font-size: 30px;
-    padding-left: 10px;
+    padding: 10px 0 10px 0;
 }
 
 .Truck {
@@ -96,7 +97,7 @@ img{
     flex-direction: column;
     font-size: 18px;
     padding: 3px;
-    width: 13em;
+    width: 14em;
     background-color: white;
     border: 2px solid black;
 }
@@ -345,7 +346,6 @@ div {
 }
 
 /*Адаптив*/
-
 @media (max-width: 450px) {
     #fileDropReceiver {display: none;}
     #timeTable{
@@ -360,20 +360,16 @@ div {
 
 @media  (min-width: 3800px) {
     .timeTable{
-        font-size: 30px;
         width: auto;
     }
     #timeTable{
-        width: auto;
         font-size: 30px;
     }
     .yardTableHead{
         font-size: 30px;
         width: auto;
-        background-color: #999999;
     }
     .yardTableData{
-        width: auto;
         font-size: 30px;
     }
     .Truck p{

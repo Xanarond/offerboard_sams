@@ -37,8 +37,8 @@
 	</div>
 	<div class="totalTable">
 		<table id="totalTable">
-
-            <tr><td class="totalTableHead"><span class="tableBold">Total Trucks</span></td>
+            <tr>
+                <td class="totalTableHead"><span class="tableBold">Total Trucks</span></td>
 				<td class="totalTableHead"><span class="tableBold">Total Volume</span></td>
                 <td class="totalTableHead"><span class="tableBold">Moscow Trucks</span></td>
                 <td class="totalTableHead"><span class="tableBold">Moscow Volume</span></td>
@@ -84,7 +84,7 @@
             <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
         </li>
         <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Late">ОПОЗДАВШИЙ</a>
+            <a href="#" class="context-menu__link" data-action="Late">Добавить кладовщика</a>
         </li>
     </ul>
 </nav>
@@ -128,7 +128,6 @@ $('.overlay_popup').click(function() { // Обрабатываем клик по
 <div id="time-node"></div>
 <script>
     $('.create').click(function(){
-
         $('#Manifest').attr('value');
     });
 </script>
@@ -196,32 +195,6 @@ $(".blink_off").click(function () {
 			return JSON.stringify(result, 2, 2);
 		};
 
-		const to_csv = function to_csv (workbook) {
-			var result = [];
-			workbook.SheetNames.forEach(function (sheetName) {
-				var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
-				if (csv.length) {
-					result.push("SHEET: " + sheetName);
-					result.push("");
-					result.push(csv);
-				}
-			});
-			return result.join("\n");
-		};
-
-		var to_fmla = function to_fmla (workbook) {
-			var result = [];
-			workbook.SheetNames.forEach(function (sheetName) {
-				var formulae = X.utils.get_formulae(workbook.Sheets[sheetName]);
-				if (formulae.length) {
-					result.push("SHEET: " + sheetName);
-					result.push("");
-					result.push(formulae.join("\n"));
-				}
-			});
-			return result.join("\n");
-		};
-
 		var to_html = function to_html (workbook) {
 			HTMLOUT.innerHTML = "";
 			workbook.SheetNames.forEach(function (sheetName) {
@@ -235,19 +208,11 @@ $(".blink_off").click(function () {
 			global_wb = wb;
 			var output = "";
 			// switch(get_format()) {
-			switch ("json") {
-				case "form":
-					output = to_fmla(wb);
-					break;
-				case "html":
-					output = to_html(wb);
-					break;
-				case "json":
-					output = to_json(wb);
-					break;
-				default:
-					output = to_csv(wb);
-			}
+			if ("json" === "html") {
+                output = to_html(wb);
+            } else {
+                output = to_json(wb);
+            }
 			// if(OUT.innerText === undefined) OUT.textContent = output;
 			// else OUT.innerText = output;
 			OUT = JSON.parse(output);
@@ -257,25 +222,15 @@ $(".blink_off").click(function () {
 			OUT["данные"].forEach(
 				function (item) {
 					if ((item[0] != null) && (item.length > 1)) {
-						// console.log(item);
+						 // console.log(item);
 						// ВЫВОД объекта div truck
-						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],item[8], item[9], item[10], item[11],item[12], item[13], item[14],);
+						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],
+                            item[8], item[9], item[10], item[11],item[12], item[13], item[14], item[15]);
 					}
 				});
 			if (typeof console !== 'undefined') console.log("Попытка обработки файла ", new Date());
 		};
 	})();
-
-	// var setfmt = window.setfmt = function setfmt() { if(global_wb) process_wb(global_wb); };
-    //
-    // var b64it = window.b64it = (function() {
-    //     var tarea = document.getElementById('b64data');
-    //     return function b64it() {
-    //         if(typeof console !== 'undefined') console.log("onload", new Date());
-    //         var wb = X.read(tarea.value, {type:'base64', WTF:false});
-    //         process_wb(wb);
-    //     };s
-    // })();
 
 	const do_file = (function () {
 		var rABS = typeof FileReader !== "undefined" && (FileReader.prototype || {}).readAsBinaryString;
@@ -345,12 +300,6 @@ $(".blink_off").click(function () {
 
     })();
 
-    // (function() {
-    //     var xlf = document.getElementById('xlf');
-    //     if(!xlf.addEventListener) return;
-    //     function handleFile(e) { do_file(e.target.files); }
-    //     xlf.addEventListener('change', handleFile, false);
-    // })();
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-36810333-1']);
     _gaq.push(['_trackPageview']);

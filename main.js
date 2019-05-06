@@ -220,10 +220,11 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalV
     let currentTime = new Date().getHours();
     let MblinkT = currentTime +3;
     let RblinkT = currentTime +8;
+
     // eslint-disable-next-line no-console
-    console.log(currentTime, MblinkT, RblinkT, TruckHour);
+    // console.log(currentTime, MblinkT, RblinkT, TruckHour);
     // eslint-disable-next-line no-console
-     console.log(totalVolume, totalTrucks, client);
+    //  console.log(totalVolume, totalTrucks, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume);
 
     div.classList.add("Truck");
     div.id = "Truck_"+ID;
@@ -238,6 +239,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalV
     let p = document.createElement("p");
     let span = document.createElement("span");
     let b = document.createElement("b");
+
     // div = document.createElement("div");
     // div.id = ID + "idFirstRow";
     // div.classList.add("firstRow");
@@ -285,38 +287,52 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalV
         TruckDate.getFullYear();
     document.getElementById(div.id).appendChild(p);
 
-    // Задание функций для Total Volume и Total Truck
-    document.querySelector( "#totalV").appendChild(b);
-    if (totalVolume !== null) {
-      b.textContent = totalVolume;
-      }
-    document.querySelector("#totalT").appendChild(span);
-    if (totalTrucks !== null) {
-        span.textContent = totalTrucks;}
-        document.querySelector( "#moscowT").appendChild(b);
-    if (totalVolume !== null) {
-          b.textContent = totalVolume;
-          }
-          document.querySelector( "#moscowV").appendChild(b);
-    if (totalVolume !== null) {
-            b.textContent = totalVolume;
-            }
-            document.querySelector( "#regionT").appendChild(b);
-    if (totalVolume !== null) {
-              b.textContent = totalVolume;
-              }
-              document.querySelector( "#regionV").appendChild(b);
-    if (totalVolume !== null) {
-                b.textContent = totalVolume;
-                }
-                document.querySelector( "#pickupT").appendChild(b);
-    if (totalVolume !== null) {
-                  b.textContent = totalVolume;
-                  }
-                  document.querySelector( "#regionV").appendChild(b);
-    if (totalVolume !== null) {
-                    b.textContent = totalVolume;
-                    }
+    // Задание полей для таблицы Total Table
+    let divtt = document.createElement("div");
+    document.querySelector( "#totalT").appendChild(divtt);
+    divtt.classList.add("TT");
+    divtt.textContent = totalTrucks;
+
+
+    let divtv = document.createElement("div");
+    document.querySelector( "#totalV").appendChild(divtv);
+    divtv.classList.add("TV");
+    divtv.textContent = totalVolume;
+
+
+    let divmt = document.createElement("div");
+    document.querySelector( "#moscowT").appendChild(divmt);
+    divmt.classList.add("MT");
+    divmt.textContent = moscowTrucks;
+
+
+    let divmv = document.createElement("div");
+    document.querySelector( "#moscowV").appendChild(divmv);
+    divmv.classList.add("MV");
+    divmv.textContent = moscowVolume;
+
+    let divrt = document.createElement("div");
+    document.querySelector( "#regionT").appendChild(divrt);
+    divrt.classList.add("RT");
+    divrt.textContent = regionTrucks;
+
+
+    let divrv = document.createElement("div");
+    document.querySelector( "#regionV").appendChild(divrv);
+    divrv.classList.add("RV");
+    divrv.textContent = regionVolume;
+
+
+    let divpt = document.createElement("div");
+    document.querySelector( "#pickupT").appendChild(divpt);
+    divpt.classList.add("PT");
+    divpt.textContent = pickupTrucks;
+
+
+    let divpv = document.createElement("div");
+    document.querySelector( "#pickupV").appendChild(divpv);
+    divpv.classList.add("PV");
+    divpv.textContent = pickupVolume;
 
     jQuery(function () {
         // There's the gallery and the trash
