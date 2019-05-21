@@ -212,7 +212,7 @@ function redrawYardTable() {
 redrawYardTable();
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
-function addTruck(ID, division, DO, manifest, client, volume, time, date, totalVolume, totalTrucks, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume) {
+function addTruck(ID, division, DO, manifest, client, volume, time, date, totalTrucks, totalVolume,  moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume) {
 
     let TruckDate = new Date((date-25569)*24*60*60*1000+time*24*60*60*1000-3*60*60*1000);
     let TruckHour = TruckDate.getHours();

@@ -1,4 +1,4 @@
-function truckPopUpMenu () {
+function truckPopUpMenu() {
 
     "use strict";
 
@@ -20,14 +20,14 @@ function truckPopUpMenu () {
      * @param {String} className The class name to check against
      * @return {Boolean}
      */
-    function clickInsideElement( e, className ) {
+    function clickInsideElement(e, className) {
         let el = e.srcElement || e.target;
 
-        if ( el.classList.contains(className) ) {
+        if (el.classList.contains(className)) {
             return el;
         } else {
-            while ( el = el.parentNode ) {
-                if ( el.classList && el.classList.contains(className) ) {
+            while (el = el.parentNode) {
+                if (el.classList && el.classList.contains(className)) {
                     taskItemInContextId = el.id;
                     return el;
                 }
@@ -114,9 +114,9 @@ function truckPopUpMenu () {
      * Listens for contextmenu events.
      */
     function contextListener() {
-        document.addEventListener( "contextmenu", function(e) {
-            taskItemInContext = clickInsideElement( e, taskItemClassName );
-            if ( taskItemInContext ) {
+        document.addEventListener("contextmenu", function (e) {
+            taskItemInContext = clickInsideElement(e, taskItemClassName);
+            if (taskItemInContext) {
                 e.preventDefault();
                 toggleMenuOn();
                 positionMenu(e);
@@ -131,15 +131,15 @@ function truckPopUpMenu () {
      * Listens for click events.
      */
     function clickListener() {
-        document.addEventListener( "click", function(e) {
-            let clickeElIsLink = clickInsideElement( e, contextMenuLinkClassName );
+        document.addEventListener("click", function (e) {
+            let clickeElIsLink = clickInsideElement(e, contextMenuLinkClassName);
 
-            if ( clickeElIsLink ) {
+            if (clickeElIsLink) {
                 e.preventDefault();
-                menuItemListener( clickeElIsLink );
+                menuItemListener(clickeElIsLink);
             } else {
                 let button = e.which || e.button;
-                if ( button === 1 ) {
+                if (button === 1) {
                     toggleMenuOff();
                 }
             }
@@ -150,8 +150,8 @@ function truckPopUpMenu () {
      * Listens for keyup events.
      */
     function keyupListener() {
-        window.onkeyup = function(e) {
-            if ( e.keyCode === 27 ) {
+        window.onkeyup = function (e) {
+            if (e.keyCode === 27) {
                 toggleMenuOff();
             }
         }
@@ -161,7 +161,7 @@ function truckPopUpMenu () {
      * Window resize event listener
      */
     function resizeListener() {
-        window.onresize = function(e) {
+        window.onresize = function (e) {
             toggleMenuOff();
         };
     }
@@ -170,9 +170,9 @@ function truckPopUpMenu () {
      * Turns the custom context menu on.
      */
     function toggleMenuOn() {
-        if ( menuState !== 1 ) {
+        if (menuState !== 1) {
             menuState = 1;
-            menu.classList.add( contextMenuActive );
+            menu.classList.add(contextMenuActive);
         }
     }
 
@@ -180,9 +180,9 @@ function truckPopUpMenu () {
      * Turns the custom context menu off.
      */
     function toggleMenuOff() {
-        if ( menuState !== 0 ) {
+        if (menuState !== 0) {
             menuState = 0;
-            menu.classList.remove( contextMenuActive );
+            menu.classList.remove(contextMenuActive);
         }
     }
 
@@ -210,13 +210,13 @@ function truckPopUpMenu () {
             windowHeight = $(document).height();
         };
 
-        if ( (windowWidth - clickCoordsX) < menuWidth ) {
+        if ((windowWidth - clickCoordsX) < menuWidth) {
             menu.style.left = windowWidth - menuWidth + "px";
         } else {
             menu.style.left = clickCoordsX + "px";
         }
 
-        if ( (windowHeight - clickCoordsY) < menuHeight ) {
+        if ((windowHeight - clickCoordsY) < menuHeight) {
             menu.style.top = windowHeight - menuHeight + "px";
         } else {
             menu.style.top = clickCoordsY + "px";
@@ -227,19 +227,17 @@ function truckPopUpMenu () {
 
     }
 
-    
 
-
-     /**
-      * Sets for id element: backgroungColor, borderColor, fontColor
-      * 
-      * @param {*} id 
-      * @param backgroundColor
-      * @param {*} borderColor 
-      * @param {*} fontColor 
-      */
-    function formatIdElement (id, backgroundColor, borderColor, fontColor) {
-        id = "#"+id;
+    /**
+     * Sets for id element: backgroungColor, borderColor, fontColor
+     *
+     * @param {*} id
+     * @param backgroundColor
+     * @param {*} borderColor
+     * @param {*} fontColor
+     */
+    function formatIdElement(id, backgroundColor, borderColor, fontColor) {
+        id = "#" + id;
         let el = document.querySelector(id);
         el.style.backgroundColor = backgroundColor;
         el.style.borderColor = borderColor;
@@ -255,26 +253,57 @@ function truckPopUpMenu () {
     function menuItemListener(link) {
         switch (link.getAttribute("data-action")) {
             case 'Moscow':
-                formatIdElement (taskItemInContextId, '#05acd6', '#000000', 'black');
+                formatIdElement(taskItemInContextId, '#05acd6', '#000000', 'black');
                 break;
             case 'Regions':
-                formatIdElement (taskItemInContextId, '#11690e', '#000000', 'black');
+                formatIdElement(taskItemInContextId, '#11690e', '#000000', 'black');
                 break;
             case 'Pickup':
-                formatIdElement (taskItemInContextId, '#ffe800', '#000000', 'black');
+                formatIdElement(taskItemInContextId, '#ffe800', '#000000', 'black');
         }
         // eslint-disable-next-line no-console
         console.log("TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
         toggleMenuOff();
 
-        if (link.getAttribute("data-action") === 'Late'){
+        for (let i = link.getAttribute("data-action"); i === 'Label'; i++) {
+            let div = document.createElement("div");
+            let span = document.createElement("span");
+            document.getElementById(taskItemInContextId).appendChild(div);
+            div.classList.add("marked");
+            div.appendChild(span);
+            span.classList.add("labeled");
+            span.textContent = "X";
+        }
 
+        for (let i = link.getAttribute("data-action"); i === 'Delay'; i++) {
+            let div = document.createElement("div");
+            div.classList.add("delayed");
+            div.textContent = "Машина опаздывает!";
+            document.getElementById(taskItemInContextId).appendChild(div);
+        }
+        for (let i = link.getAttribute("data-action"); i === 'Gate'; i++) {
+            $('.modal').modal('show');
+        }
+        let inp = document.getElementById('gate');
+        if (inp !== null) {
+            let p1 = document.createElement("p");
+            document.getElementById(taskItemInContextId).appendChild(p1);
+            inp.oninput = function () {
+                p1.setAttribute("id", "result");
+                p1.textContent = "Gate:" + inp.value;
+            };
+
+            let p2 = document.createElement("p");
+            let inp2 = document.getElementById('storekeeper');
+            if (inp2 !== null) {
+                p2 = document.createElement("p");
+                document.getElementById(taskItemInContextId).appendChild(p2);
+                inp2.oninput = function () {
+                    p2.setAttribute("id", "storekeep");
+                    p2.textContent = "Storekeeper:" + inp2.value;
+                }
+            }
         }
     }
-
-    /**
-     * Run the app.
-     */
     init();
-
 }

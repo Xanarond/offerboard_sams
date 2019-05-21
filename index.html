@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="dist/css/bootstrap.css">
     <script src="vendor/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
     <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/scripts/retina.js"></script>
+    <!--    <script type="text/javascript" src="/scripts/retina.js"></script>-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/bootstrap.js"></script>
 
     <!-- https://github.com/SheetJS/js-xlsx-->
     <script src="vendor/js-xlsx-master/jszip.js"></script>
@@ -26,297 +27,339 @@
 
 <body>
 
-<nav class="navigationTopBar">
+<nav class="navbar navbar-dark logo">
+    <a class="navbar-brand">
+        <img src="img/logo-ss-sds.png" width="300" height="200" alt="">
+    </a>
+    <h2 class="title">DASHBOARD</h2>
     <div id="fileDropReceiver">
         <span>Перетащите сюда xlsx файл...</span>
     </div>
 </nav>
-<div class="content">
-	<div class="logos">
-		<img src="img/logo-ss-sds.png" alt="">
-	</div>
-	<div class="totalTable">
-		<table id="totalTable">
-            <tr>
-                <td class="totalTableHead"><span class="tableBold">Total Trucks</span></td>
-				<td class="totalTableHead"><span class="tableBold">Total Volume</span></td>
-                <td class="totalTableHead"><span class="tableBold">Moscow Trucks</span></td>
-                <td class="totalTableHead"><span class="tableBold">Moscow Volume</span></td>
-                <td class="totalTableHead"><span class="tableBold">Region Trucks</span></td>
-                <td class="totalTableHead"><span class="tableBold">Region Volume</span></td>
-                <td class="totalTableHead"><span class="tableBold">Pickup Trucks</span></td>
-                <td class="totalTableHead"><span class="tableBold">Pickup Volume</span></td>
-            </tr>
-            <tr>
-            <td class="totalTableData" id="totalT"></td>
-            <td class="totalTableData" id="totalV"></td>
-            <td class="totalTableData" id="moscowT"></td>
-            <td class="totalTableData" id="moscowV"></td>
-            <td class="totalTableData" id="regionT"></td>
-            <td class="totalTableData" id="regionV"></td>
-            <td class="totalTableData" id="pickupT"></td>
-            <td class="totalTableData" id="pickupV"></td>
-        </tr>
-		</table>
-	</div>
-	<div class="timeTable">
-        <table id="timeTable">
-        </table>
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="totalTable">
+            <table id="totalTable">
+                <tr>
+                    <td class="totalTableHead"><span class="tableBold">Total Trucks</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Total Volume</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Moscow Trucks</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Moscow Volume</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Region Trucks</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Region Volume</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Pickup Trucks</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Pickup Volume</span></td>
+                </tr>
+                <tr>
+                    <td class="totalTableData" id="totalT"></td>
+                    <td class="totalTableData" id="totalV"></td>
+                    <td class="totalTableData" id="moscowT"></td>
+                    <td class="totalTableData" id="moscowV"></td>
+                    <td class="totalTableData" id="regionT"></td>
+                    <td class="totalTableData" id="regionV"></td>
+                    <td class="totalTableData" id="pickupT"></td>
+                    <td class="totalTableData" id="pickupV"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-
-    <div class="yardTable">
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="timeTable">
+            <table id="timeTable">
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <table id="yardTable">
         </table>
     </div>
 </div>
+<div class="yardTable">
 
 
-<!--  Прописываем макет всплывающего меню -->
-<nav id="context-menu" class="context-menu">
-    <ul class="context-menu__items">
-        <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Moscow">МОСКВА (голубой)</a>
-        </li>
-        <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Regions">РЕГИОНЫ (темно-зеленый)</a>
-        </li>
-        <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
-        </li>
-        <li class="context-menu__item">
-            <a href="#" class="context-menu__link" data-action="Late">Добавить кладовщика</a>
-        </li>
-    </ul>
-</nav>
-<script src="main.js"></script>
-<script>
-	redrawTimeTable();
-    redrawYardTable();
-</script>
-<button class="blink_on">Включить оповещение</button>
-<button class="blink_off">Выключить оповещение</button>
-<button class="show_popup pal_btn" rel="popup1">Добавить палет</button>
-<div class="overlay_popup"></div>
+    <!--  Прописываем макет всплывающего меню -->
+    <nav id="context-menu" class="context-menu">
+        <ul class="context-menu__items">
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link" data-action="Moscow">МОСКВА (голубой)</a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link" data-action="Regions">РЕГИОНЫ (темно-зеленый)</a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link" data-action="Label">Пометка о приезде</a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link" data-action="Delay">Машина опаздывает</a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link" data-action="Gate">Указать предварительный номер ворот и
+                    кладовщика</a>
+            </li>
+        </ul>
+    </nav>
+    <script src="main.js"></script>
+    <script>
+        redrawTimeTable();
+        redrawYardTable();
+    </script>
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Укажите предварительный номер ворот:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>Укажите предварительный номер ворот:</span>
+                    <input type="text" id="gate">
+                    <span>Укажите кладовщика:</span>
+                    <input type="text" id="storekeeper">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="apply" data-dismiss="modal" onClick="">Сохранить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<button class="blink_on">Включить оповещение</button>-->
+    <!--<button class="blink_off">Выключить оповещение</button>-->
+    <!--<button class="show_popup pal_btn" rel="popup1">Добавить палет</button>-->
+    <!--<div class="overlay_popup"></div>-->
 
-<script type="text/javascript">
-$('.show_popup').click(function() { // Вызываем функцию по нажатию на кнопку
-    var popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
-    $(popup_id).show(); // Открываем окно
-    $('.overlay_popup').show(); // Открываем блок заднего фона
-})
-$('.overlay_popup').click(function() { // Обрабатываем клик по заднему фону
-    $('.overlay_popup, .popup').hide(); // Скрываем затемнённый задний фон и основное всплывающее окно
-})
-</script>
-<div class="popup" id="popup1">
-  <div class="object">
-      <p>Manifest: </p>
-      <p><input type= "text" id="Manifest"></p>
-      <p>DO: </p>
-      <p><input type= "text" id="DO"></p>
-      <p>Клиент: </p>
-      <p><input type= "text" id="Client"></p>
-      <p>Volume: </p>
-      <p><input type= "text" id="Volume"></p>
-      <p>Время: </p>
-      <p><input type= "text" id="Time"></p>
-      <p>Дата: </p>
-      <p><input type= "text" id="Date"></p>
-        <button class="create" style="font-size: 50px; margin-left: 10px">Test</button>
-  </div>
-</div>
-<div id="time-node"></div>
-<script>
-    $('.create').click(function(){
-        $('#Manifest').attr('value');
-    });
-</script>
-<script>
-	let timeNode = document.getElementById('time-node');
-	function getCurrentTimeString() {
-		return new Date().toTimeString().replace(/ .*/, '');
-	}
-	setInterval(
-		() => timeNode.innerHTML = getCurrentTimeString(),
-		1000
-	);
-</script>
-<script>
-            setInterval(function() {
-                $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '0.0'}, 300).css('color', 'red');
-                setTimeout(function () {
-                    $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '1.0'}, 300);
-                })
-            });
-</script>
-<script>
-	$(".blink_on").click(function () {
-	setTimeout(function(){
-		 setInterval(function(){
-			$("tr.Truck_wait").animate({backgroundColor: "#a2020e"})
-                .animate({backgroundColor: "#ffffff"})
-                .animate({backgroundColor: "#a2020e"})
-                .animate({backgroundColor: "#ffffff"})},500)},300);
-});
+    <script type="text/javascript">
+        $('.show_popup').click(function () { // Вызываем функцию по нажатию на кнопку
+            var popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
+            $(popup_id).show(); // Открываем окно
+            $('.overlay_popup').show(); // Открываем блок заднего фона
+        })
+        $('.overlay_popup').click(function () { // Обрабатываем клик по заднему фону
+            $('.overlay_popup, .popup').hide(); // Скрываем затемнённый задний фон и основное всплывающее окно
+        })
+    </script>
+    <div class="popup" id="popup1">
+        <div class="object">
+            <p>Manifest: </p>
+            <p><input type="text" id="Manifest"></p>
+            <p>DO: </p>
+            <p><input type="text" id="DO"></p>
+            <p>Клиент: </p>
+            <p><input type="text" id="Client"></p>
+            <p>Volume: </p>
+            <p><input type="text" id="Volume"></p>
+            <p>Время: </p>
+            <p><input type="text" id="Time"></p>
+            <p>Дата: </p>
+            <p><input type="text" id="Date"></p>
+            <button class="create" style="font-size: 50px; margin-left: 10px">Test</button>
+        </div>
+    </div>
+    <div id="time-node"></div>
+    <script>
+        $('.create').click(function () {
+            $('#Manifest').attr('value');
+        });
+    </script>
+    <script>
+        let timeNode = document.getElementById('time-node');
 
-$(".blink_off").click(function () {
-		 $("tr.Truck_wait").stop().animate();
-});
-</script>
-<script>
-	const X = XLSX;
-	let XW = {
-		/* worker message */
-		msg: 'xlsx',
-		/* worker scripts */
-		worker: './xlsxworker.js'
-	};
+        function getCurrentTimeString() {
+            return new Date().toTimeString().replace(/ .*/, '');
+        }
 
-	let global_wb;
+        setInterval(
+            () => timeNode.innerHTML = getCurrentTimeString(),
+            1000
+        );
+    </script>
+    <script>
+        setInterval(function () {
+            $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '0.0'}, 800);
+            setTimeout(function () {
+                $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '1.0'}, 800);
+            })
+        });
+    </script>
+    <script>
+        $(".blink_on").click(function () {
+            setTimeout(function () {
+                setInterval(function () {
+                    $("tr.Truck_wait").animate({backgroundColor: "#a2020e"})
+                        .animate({backgroundColor: "#ffffff"})
+                        .animate({backgroundColor: "#a2020e"})
+                        .animate({backgroundColor: "#ffffff"})
+                }, 500)
+            }, 300);
+        });
 
-	const process_wb = (function () {
-		// var OUT = document.getElementById('out');
-		let OUT;
-		var HTMLOUT = document.getElementById('htmlout');
-
-		var get_format = (function () {
-			var radios = document.getElementsByName("format");
-			return function () {
-				for (var i = 0; i < radios.length; ++i) if (radios[i].checked || radios.length === 1) return radios[i].value;
-			};
-		})();
-
-		const to_json = function to_json (workbook) {
-			var result = {};
-			workbook.SheetNames.forEach(function (sheetName) {
-				var roa = X.utils.sheet_to_json(workbook.Sheets[sheetName], {header: 1});
-				if (roa.length) result[sheetName] = roa;
-			});
-			return JSON.stringify(result, 2, 2);
-		};
-
-		var to_html = function to_html (workbook) {
-			HTMLOUT.innerHTML = "";
-			workbook.SheetNames.forEach(function (sheetName) {
-				var htmlstr = X.write(workbook, {sheet: sheetName, type: 'string', bookType: 'html'});
-				HTMLOUT.innerHTML += htmlstr;
-			});
-			return "";
-		};
-
-		return function process_wb (wb) {
-			global_wb = wb;
-			var output = "";
-			// switch(get_format()) {
-			if ("json" === "html") {
-                output = to_html(wb);
-            } else {
-                output = to_json(wb);
-            }
-			// if(OUT.innerText === undefined) OUT.textContent = output;
-			// else OUT.innerText = output;
-			OUT = JSON.parse(output);
-			document.getElementById("fileDropReceiver").hidden = true;
-			// ОБРАБОТЧИК ОБЪЕКТА JSON - под создание объектов truck
-			// console.log(OUT["данные"]);
-			OUT["данные"].forEach(
-				function (item) {
-					if ((item[0] != null) && (item.length > 1)) {
-						 // console.log(item);
-						// ВЫВОД объекта div truck
-						addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],
-                            item[8], item[9], item[10], item[11],item[12], item[13], item[14], item[15]);
-					}
-				});
-			if (typeof console !== 'undefined') console.log("Попытка обработки файла ", new Date());
-		};
-	})();
-
-	const do_file = (function () {
-		var rABS = typeof FileReader !== "undefined" && (FileReader.prototype || {}).readAsBinaryString;
-		var domrabs = document.getElementsByName("userabs")[0];
-		if (!rABS) domrabs.disabled = !(domrabs.checked = false);
-
-		let use_worker = typeof Worker !== 'undefined';
-		const domwork = document.getElementsByName("useworker")[0];
-		if (!use_worker) domwork.disabled = !(domwork.checked = false);
-
-		const xw = function xw (data, cb) {
-			var worker = new Worker(XW.worker);
-			worker.onmessage = function (e) {
-				switch (e.data.t) {
-					case 'ready':
-						break;
-					case 'e':
-						console.error(e.data.d);
-						break;
-					case XW.msg:
-						cb(JSON.parse(e.data.d));
-						break;
-				}
-			};
-			worker.postMessage({d: data, b: rABS ? 'binary' : 'array'});
-		};
-
-        return function do_file(files) {
-            // console.log(files);
-            // rABS = domrabs.checked;
-            rABS = false;
-            // use_worker = domwork.checked;
-            use_worker = false;
-            var f = files[0];
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                if (typeof console !== 'undefined') console.log("Попытка загрузки файла", new Date(), rABS, use_worker);
-                var data = e.target.result;
-                if (!rABS) data = new Uint8Array(data);
-                if (use_worker) xw(data, process_wb);
-                else process_wb(X.read(data, {type: rABS ? 'binary' : 'array'}));
-            };
-            if (rABS) reader.readAsBinaryString(f);
-            else reader.readAsArrayBuffer(f);
+        $(".blink_off").click(function () {
+            $("tr.Truck_wait").stop().animate();
+        });
+    </script>
+    <script>
+        const X = XLSX;
+        let XW = {
+            /* worker message */
+            msg: 'xlsx',
+            /* worker scripts */
+            worker: './xlsxworker.js'
         };
-    })();
 
-	(function () {
-		const drop = document.getElementById('fileDropReceiver');
-		if (!drop.addEventListener) return;
+        let global_wb;
 
-        function handleDrop(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            do_file(e.dataTransfer.files);
-        }
+        const process_wb = (function () {
+            // var OUT = document.getElementById('out');
+            let OUT;
+            var HTMLOUT = document.getElementById('htmlout');
 
-        function handleDragover(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'copy';
-        }
+            var get_format = (function () {
+                var radios = document.getElementsByName("format");
+                return function () {
+                    for (var i = 0; i < radios.length; ++i) if (radios[i].checked || radios.length === 1) return radios[i].value;
+                };
+            })();
 
-        drop.addEventListener('dragenter', handleDragover, false);
-        drop.addEventListener('dragover', handleDragover, false);
-        drop.addEventListener('drop', handleDrop, false);
+            const to_json = function to_json(workbook) {
+                var result = {};
+                workbook.SheetNames.forEach(function (sheetName) {
+                    var roa = X.utils.sheet_to_json(workbook.Sheets[sheetName], {header: 1});
+                    if (roa.length) result[sheetName] = roa;
+                });
+                return JSON.stringify(result, 2, 2);
+            };
 
-    })();
+            var to_html = function to_html(workbook) {
+                HTMLOUT.innerHTML = "";
+                workbook.SheetNames.forEach(function (sheetName) {
+                    var htmlstr = X.write(workbook, {sheet: sheetName, type: 'string', bookType: 'html'});
+                    HTMLOUT.innerHTML += htmlstr;
+                });
+                return "";
+            };
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36810333-1']);
-    _gaq.push(['_trackPageview']);
+            return function process_wb(wb) {
+                global_wb = wb;
+                var output = "";
+                // switch(get_format()) {
+                if ("json" === "html") {
+                    output = to_html(wb);
+                } else {
+                    output = to_json(wb);
+                }
+                // if(OUT.innerText === undefined) OUT.textContent = output;
+                // else OUT.innerText = output;
+                OUT = JSON.parse(output);
+                document.getElementById("fileDropReceiver").hidden = true;
+                // ОБРАБОТЧИК ОБЪЕКТА JSON - под создание объектов truck
+                // console.log(OUT["данные"]);
+                OUT["данные"].forEach(
+                    function (item) {
+                        if ((item[0] != null) && (item.length > 1)) {
+                            // console.log(item);
+                            // ВЫВОД объекта div truck поля в таблице образца
+                            addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],
+                                item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15]);
+                        }
+                    });
+                if (typeof console !== 'undefined') console.log("Попытка обработки файла ", new Date());
+            };
+        })();
 
-    (function () {
-		const ga = document.createElement('script');
-		ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		const s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(ga, s);
-    })();
+        const do_file = (function () {
+            var rABS = typeof FileReader !== "undefined" && (FileReader.prototype || {}).readAsBinaryString;
+            var domrabs = document.getElementsByName("userabs")[0];
+            if (!rABS) domrabs.disabled = !(domrabs.checked = false);
+
+            let use_worker = typeof Worker !== 'undefined';
+            const domwork = document.getElementsByName("useworker")[0];
+            if (!use_worker) domwork.disabled = !(domwork.checked = false);
+
+            const xw = function xw(data, cb) {
+                var worker = new Worker(XW.worker);
+                worker.onmessage = function (e) {
+                    switch (e.data.t) {
+                        case 'ready':
+                            break;
+                        case 'e':
+                            console.error(e.data.d);
+                            break;
+                        case XW.msg:
+                            cb(JSON.parse(e.data.d));
+                            break;
+                    }
+                };
+                worker.postMessage({d: data, b: rABS ? 'binary' : 'array'});
+            };
+
+            return function do_file(files) {
+                // console.log(files);
+                // rABS = domrabs.checked;
+                rABS = false;
+                // use_worker = domwork.checked;
+                use_worker = false;
+                var f = files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    if (typeof console !== 'undefined') console.log("Попытка загрузки файла", new Date(), rABS, use_worker);
+                    var data = e.target.result;
+                    if (!rABS) data = new Uint8Array(data);
+                    if (use_worker) xw(data, process_wb);
+                    else process_wb(X.read(data, {type: rABS ? 'binary' : 'array'}));
+                };
+                if (rABS) reader.readAsBinaryString(f);
+                else reader.readAsArrayBuffer(f);
+            };
+        })();
+
+        (function () {
+            const drop = document.getElementById('fileDropReceiver');
+            if (!drop.addEventListener) return;
+
+            function handleDrop(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                do_file(e.dataTransfer.files);
+            }
+
+            function handleDragover(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'copy';
+            }
+
+            drop.addEventListener('dragenter', handleDragover, false);
+            drop.addEventListener('dragover', handleDragover, false);
+            drop.addEventListener('drop', handleDrop, false);
+
+        })();
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36810333-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            const ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            const s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
 
 
-truckPopUpMenu ();
-</script>
-
+        truckPopUpMenu();
+    </script>
 
 
 </body>

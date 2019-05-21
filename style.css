@@ -2,6 +2,14 @@ body {
     background-color: #eeeeee;
 }
 
+.logo{
+    background: #b3a9c2;
+}
+
+.labeled{
+    font-size: 50px;
+    color: #ff0009;
+}
 #timeTable {
     width: 100%;
     border-collapse: collapse;
@@ -24,7 +32,7 @@ body {
     display: inline-block;
     font-weight: bold;
     border-radius: 10px;
-    font-size: 30px;
+    /*font-size: 30px;*/
     width: 250px;
     text-align: center;
     margin-left: 10px;
@@ -39,14 +47,10 @@ body {
 }
 
 #yardTable {
-    width: auto;
     border-collapse: collapse;
     border-spacing: 0;
 }
 #totalTable {
-    width: auto;
-    border-collapse: collapse;
-    border-spacing: 0;
     margin: 15px 10px 30px 10px;
 }
 #totalTable td {
@@ -54,14 +58,14 @@ body {
     text-align: center;
 }
 .yardTableHead {
-    height: 1.5rem;
+    /*height: 1.5rem;*/
     background-color: #999999;
 }
 
 #yardTable td {
     border: black 1px solid;
     text-align: center;
-    width: 3.1em;
+    width: 15em;
 }
 
 .yardTableData {
@@ -73,21 +77,14 @@ body {
 }
 .totalTableData{
     height: 6rem;
-    font-size: 30px;
+    /*font-size: 30px;*/
 }
-img{
-    height: 300px;
-    width: 500px;
-}
-.logos{
-    display: inline-block;
-    padding: 10px 10px 10px 1800px;
-    float: left;
+.title{
+    color: #ffffff;
 }
 .tableBold {
     font-weight: bold;
     letter-spacing: 0.08em;
-    font-size: 30px;
     padding: 10px 0 10px 0;
 }
 
@@ -164,15 +161,16 @@ img{
     margin: 0 0 0 15px;
 }
 
-#fileDropReceiver {
-    border: 2px dashed #bbb;
+#fileDropReceiver{
+    border: 2px solid #ffffff;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     padding: 25px;
     text-align: center;
     font: 20pt bold, "Vollkorn";
-    color: #bbb
+    color: #ffffff;
+    width: 100%;
 }
 
 textarea {
@@ -215,7 +213,7 @@ textarea:focus {
     font-family: 'Montserrat', sans-serif;
     color: #6060cf;
     transition: .2s ease-in-out;
-    font-size: 30px;
+    /*font-size: 30px;*/
 }
 blink_on:before {
     content: "";
@@ -250,7 +248,7 @@ blink_on:hover:before {
   font-family: 'Montserrat', sans-serif;
   color: #6060cf;
   transition: .2s ease-in-out;
-  font-size: 30px;
+  /*font-size: 30px;*/
 }
 pal_btn:before {
     content: "";
@@ -285,7 +283,7 @@ pal_btn:hover:before {
     font-family: 'Montserrat', sans-serif;
     color: #a2020e;
     transition: .2s ease-in-out;
-    font-size: 30px;
+    /*font-size: 30px;*/
 }
 blink_off:before {
     content: "";
@@ -305,13 +303,6 @@ blink_off:hover {
 blink_off:hover:before {
     left: 150px;
     transition: .5s ease-in-out;
-}
-div {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    position: relative;
-    display: block;
 }
 
 /* Окно */
@@ -355,24 +346,5 @@ div {
     .timeTable{
         font-size: 14px;
         width: auto;
-    }
-}
-
-@media  (min-width: 3800px) {
-    .timeTable{
-        width: auto;
-    }
-    #timeTable{
-        font-size: 30px;
-    }
-    .yardTableHead{
-        font-size: 30px;
-        width: auto;
-    }
-    .yardTableData{
-        font-size: 30px;
-    }
-    .Truck p{
-        font-size: 30px;
     }
 }
