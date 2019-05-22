@@ -265,17 +265,16 @@ function truckPopUpMenu() {
         console.log("TruckId = " + taskItemInContextId + ", Task action = " + link.getAttribute("data-action"));
         toggleMenuOff();
 
-        for (let i = link.getAttribute("data-action"); i === 'Label'; i++) {
+        let attribute = link.getAttribute("data-action");
+        if (attribute === 'Label') {
             let div = document.createElement("div");
             let span = document.createElement("span");
-            document.getElementById(taskItemInContextId).appendChild(div);
             div.classList.add("marked");
             div.appendChild(span);
             span.classList.add("labeled");
             span.textContent = "X";
-        }
-
-        for (let i = link.getAttribute("data-action"); i === 'Delay'; i++) {
+            document.getElementById(taskItemInContextId).appendChild(div);
+        } else if (attribute === 'Delay') {
             let div = document.createElement("div");
             div.classList.add("delayed");
             div.textContent = "Машина опаздывает!";
@@ -305,5 +304,6 @@ function truckPopUpMenu() {
             }
         }
     }
+
     init();
 }

@@ -253,13 +253,18 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     p = document.createElement("p");
     p.classList.add("manifest");
     if (manifest !== null) {
-    p.textContent = "Manifest: " + manifest;}
+    p.textContent = manifest;}
     document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
     p.classList.add("DO");
     p.textContent = "DO: " + DO;
     document.getElementById(div.id).appendChild(p);
+
+    p = document.createElement("p");
+    p.classList.add("division");
+    p.textContent = division.replace(/ {1,}/g," ");
+    document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
     p.classList.add("client");

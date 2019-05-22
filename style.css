@@ -66,6 +66,7 @@ body {
     border: black 1px solid;
     text-align: center;
     width: 15em;
+    height: 6rem;
 }
 
 .yardTableData {
@@ -159,6 +160,10 @@ body {
 
 .GITruckWrapper .Truck {
     margin: 0 0 0 15px;
+}
+
+#result p {
+    font-size: 30px;
 }
 
 #fileDropReceiver{
