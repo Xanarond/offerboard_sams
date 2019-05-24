@@ -281,9 +281,10 @@ function truckPopUpMenu() {
             document.getElementById(taskItemInContextId).appendChild(div);
         }
         for (let i = link.getAttribute("data-action"); i === 'Gate'; i++) {
-            $('.modal').modal('show');
+            $('#modal1').modal('show');
         }
-        let inp = document.getElementById('gate');
+
+        let inp = document.getElementById('gate');//указываем куда будет писать результат инпута
         if (inp !== null) {
             let p1 = document.createElement("p");
             document.getElementById(taskItemInContextId).appendChild(p1);
@@ -300,7 +301,7 @@ function truckPopUpMenu() {
                 inp2.oninput = function () {
                     p2.setAttribute("id", "storekeep");
                     p2.textContent = "Storekeeper:" + inp2.value;
-                }
+                };
             }
         }
     }

@@ -57,6 +57,16 @@ body {
     border: black 1px solid;
     text-align: center;
 }
+#pickingS{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+#pickingD{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
 .yardTableHead {
     /*height: 1.5rem;*/
     background-color: #999999;

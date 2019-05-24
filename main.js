@@ -4,6 +4,48 @@
 const timeTable = document.querySelector("#timeTable");
 const yardTable = document.querySelector("#yardTable");
 
+function input() {
+    $('#pickingS, #pickingD').click(function () {
+        $('#modal2').modal('show');
+
+        let inp = document.getElementById('ps');
+        let p1 = document.createElement("p");
+        if (inp !== null) {
+            document.getElementById('pickingS').appendChild(p1);
+            inp.oninput = function () {
+                p1.setAttribute("id", "result_ps");
+                p1.textContent = inp.value;
+            };
+        }
+        let inp2 = document.getElementById('pd');
+        let p2 = document.createElement("p");
+        if (inp2 !== null) {
+            document.getElementById('pickingD').appendChild(p2);
+            inp2.oninput = function () {
+                p2.setAttribute("id", "result_pd");
+                p2.textContent = inp2.value;
+            };
+            if (inp2 === inp2.value) {
+                document.getElementById('pickingD').remove();
+                /*document.getElementById('pickingD').appendChild(p2);
+                inp2.oninput = function () {
+                    p2.setAttribute("id", "result_pd");
+                    p2.textContent = inp2.value;
+                };*/
+            }
+        }
+    });
+}
+
+input();
+// Удаление статусов в главной таблице
+function remove() {
+    $("#remove").click(function () {
+        $('p#result_ps').detach();
+        $('p#result_pd').detach();
+    });
+}
+
 
 // чертим скелет 1 таблички - timeTable
 function redrawTimeTable() {
@@ -41,6 +83,7 @@ function redrawTimeTable() {
     }
     timeTable.appendChild(tr);
 }
+
 redrawTimeTable();
 
 // чертим скелет 2 таблички - yardTableData
@@ -135,7 +178,7 @@ function redrawYardTable() {
     td.appendChild(span);
     tr.appendChild(td);
     // пустые ячейки
-     for (let i = 1; i <= 58; i++) {
+    for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("Truck_waiting");
         td.id = "Truck_waiting" + (59 - i);
@@ -209,17 +252,18 @@ function redrawYardTable() {
     }
 
 }
+
 redrawYardTable();
 // ID, division, DO, manifest, client, volume, time, date
 // Добавляет информацию по грузовику в таблицу OUT DO
-function addTruck(ID, division, DO, manifest, client, volume, time, date, totalTrucks, totalVolume,  moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume) {
+function addTruck(ID, division, DO, manifest, client, volume, time, date, totalTrucks, totalVolume, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume) {
 
-    let TruckDate = new Date((date-25569)*24*60*60*1000+time*24*60*60*1000-3*60*60*1000);
+    let TruckDate = new Date((date - 25569) * 24 * 60 * 60 * 1000 + time * 24 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000);
     let TruckHour = TruckDate.getHours();
     let div = document.createElement("div");
     let currentTime = new Date().getHours();
-    let MblinkT = currentTime +3;
-    let RblinkT = currentTime +8;
+    let MblinkT = currentTime + 3;
+    let RblinkT = currentTime + 8;
 
     // eslint-disable-next-line no-console
     // console.log(currentTime, MblinkT, RblinkT, TruckHour);
@@ -227,10 +271,10 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     //  console.log(totalVolume, totalTrucks, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume);
 
     div.classList.add("Truck");
-    div.id = "Truck_"+ID;
+    div.id = "Truck_" + ID;
 
-    TruckHour = TruckHour - 3;
-    if (TruckHour < 0 ) {
+    TruckHour = TruckHour - 4;
+    if (TruckHour < 0) {
         TruckHour += 24;
     }
 
@@ -253,7 +297,8 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     p = document.createElement("p");
     p.classList.add("manifest");
     if (manifest !== null) {
-    p.textContent = manifest;}
+        p.textContent = manifest;
+    }
     document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
@@ -263,12 +308,12 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
 
     p = document.createElement("p");
     p.classList.add("division");
-    p.textContent = division.replace(/ {1,}/g," ");
+    p.textContent = division.replace(/ +/g, " ");
     document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
     p.classList.add("client");
-    p.textContent = client.replace(/ +/g," ");
+    p.textContent = client.replace(/ +/g, " ");
     document.getElementById(TruckID).appendChild(p);
 
     p = document.createElement("p");
@@ -288,104 +333,105 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
 
     p = document.createElement("p");
     p.classList.add("date");
-    p.textContent = ("0" + TruckDate.getDate()).slice(-2) + "-" + ("0"+(TruckDate.getMonth()+1)).slice(-2) + "-" +
+    p.textContent = ("0" + TruckDate.getDate()).slice(-2) + "-" + ("0" + (TruckDate.getMonth() + 1)).slice(-2) + "-" +
         TruckDate.getFullYear();
     document.getElementById(div.id).appendChild(p);
 
-    // Задание полей для таблицы Total Table
-    let divtt = document.createElement("div");
-    document.querySelector( "#totalT").appendChild(divtt);
-    divtt.classList.add("TT");
-    divtt.textContent = totalTrucks;
+        // Задание полей для таблицы Total Table
+        let divtt = document.createElement("div");
+        document.querySelector("#totalT").appendChild(divtt);
+        divtt.classList.add("TT");
+        divtt.textContent = totalTrucks;
 
 
-    let divtv = document.createElement("div");
-    document.querySelector( "#totalV").appendChild(divtv);
-    divtv.classList.add("TV");
-    divtv.textContent = totalVolume;
+        let divtv = document.createElement("div");
+        document.querySelector("#totalV").appendChild(divtv);
+        divtv.classList.add("TV");
+        divtv.textContent = totalVolume;
 
 
-    let divmt = document.createElement("div");
-    document.querySelector( "#moscowT").appendChild(divmt);
-    divmt.classList.add("MT");
-    divmt.textContent = moscowTrucks;
+        let divmt = document.createElement("div");
+        document.querySelector("#moscowT").appendChild(divmt);
+        divmt.classList.add("MT");
+        divmt.textContent = moscowTrucks;
 
 
-    let divmv = document.createElement("div");
-    document.querySelector( "#moscowV").appendChild(divmv);
-    divmv.classList.add("MV");
-    divmv.textContent = moscowVolume;
+        let divmv = document.createElement("div");
+        document.querySelector("#moscowV").appendChild(divmv);
+        divmv.classList.add("MV");
+        divmv.textContent = moscowVolume;
 
-    let divrt = document.createElement("div");
-    document.querySelector( "#regionT").appendChild(divrt);
-    divrt.classList.add("RT");
-    divrt.textContent = regionTrucks;
-
-
-    let divrv = document.createElement("div");
-    document.querySelector( "#regionV").appendChild(divrv);
-    divrv.classList.add("RV");
-    divrv.textContent = regionVolume;
+        let divrt = document.createElement("div");
+        document.querySelector("#regionT").appendChild(divrt);
+        divrt.classList.add("RT");
+        divrt.textContent = regionTrucks;
 
 
-    let divpt = document.createElement("div");
-    document.querySelector( "#pickupT").appendChild(divpt);
-    divpt.classList.add("PT");
-    divpt.textContent = pickupTrucks;
+        let divrv = document.createElement("div");
+        document.querySelector("#regionV").appendChild(divrv);
+        divrv.classList.add("RV");
+        divrv.textContent = regionVolume;
 
 
-    let divpv = document.createElement("div");
-    document.querySelector( "#pickupV").appendChild(divpv);
-    divpv.classList.add("PV");
-    divpv.textContent = pickupVolume;
+        let divpt = document.createElement("div");
+        document.querySelector("#pickupT").appendChild(divpt);
+        divpt.classList.add("PT");
+        divpt.textContent = pickupTrucks;
 
-    jQuery(function () {
-        // There's the gallery and the trash
-        var $gallery = $(".Truck"),
-            $trash = $(".yardTableData");
-        var $blink;
+
+        let divpv = document.createElement("div");
+        document.querySelector("#pickupV").appendChild(divpv);
+        divpv.classList.add("PV");
+        divpv.textContent = pickupVolume;
+
+        jQuery(function () {
+            // There's the gallery and the trash
+            var $gallery = $(".Truck"),
+                $trash = $(".yardTableData");
+            var $blink;
             $blink = $(".Truck_waiting");
 
-        // Let the gallery items be draggable
-        $gallery.draggable({
-            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-            revert: "invalid", // when not dropped, the item will revert back to its initial position
-            //containment: "document",
-            helper: "clone",
-            cursor: "move",
-            cursorAt: {top: 48, left: 55},
-            opacity: 0.35,
-            //iframeFix: true
-        });
-
-        // Let the trash be droppable, accepting the gallery items
-        $trash.droppable({
-            accept: ".Truck",
-            classes: {
-                "ui-droppable-active": "ui-state-highlight"
-            },
-            drop: function (event, ui) {
-                drugTruck(ui.draggable, event.target);
-            }
-        });
-
-        $blink.droppable({
-            accept: ".Truck",
-            classes: {
-                "ui-droppable-active": "ui-state-highlight"
-            },
-            drop: function (event, ui) {
-                drugTruck(ui.draggable, event.target);
-            }
-        });
-        // Truck drug function
-        function drugTruck($item, target) {
-            $item.append().appendTo(target).fadeIn(function () {
-                if (target.id === "GI");
+            // Let the gallery items be draggable
+            $gallery.draggable({
+                cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+                revert: "invalid", // when not dropped, the item will revert back to its initial position
+                //containment: "document",
+                helper: "clone",
+                cursor: "move",
+                cursorAt: {top: 48, left: 55},
+                opacity: 0.35,
+                //iframeFix: true
             });
 
-            $item.find("a.ui-icon-trash").remove();
-            // console.log(target.id);
-        }
-    });
-}
+            // Let the trash be droppable, accepting the gallery items
+            $trash.droppable({
+                accept: ".Truck",
+                classes: {
+                    "ui-droppable-active": "ui-state-highlight"
+                },
+                drop: function (event, ui) {
+                    drugTruck(ui.draggable, event.target);
+                }
+            });
+
+            $blink.droppable({
+                accept: ".Truck",
+                classes: {
+                    "ui-droppable-active": "ui-state-highlight"
+                },
+                drop: function (event, ui) {
+                    drugTruck(ui.draggable, event.target);
+                }
+            });
+
+            // Truck drug function
+            function drugTruck($item, target) {
+                $item.append().appendTo(target).fadeIn(function () {
+                    if (target.id === "GI") ;
+                });
+
+                $item.find("a.ui-icon-trash").remove();
+                // console.log(target.id);
+            }
+        });
+    }
