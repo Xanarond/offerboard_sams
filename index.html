@@ -49,7 +49,7 @@
                     <td class="totalTableHead"><span class="tableBold">Region Volume</span></td>
                     <td class="totalTableHead"><span class="tableBold">Pickup Trucks</span></td>
                     <td class="totalTableHead"><span class="tableBold">Pickup Volume</span></td>
-                    <td class="totalTableHead"><span class="tableBold">Picking Status</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Picking Finished</span></td>
                     <td class="totalTableHead"><span class="tableBold">Picking Delay</span></td>
                 </tr>
                 <tr>
@@ -83,123 +83,134 @@
     </div>
 </div>
 <div class="yardTable">
+</div>
 
-
-    <!--  Прописываем макет всплывающего меню -->
-    <nav id="context-menu" class="context-menu">
-        <ul class="context-menu__items">
-            <li class="context-menu__item">
-                <a href="#" class="context-menu__link" data-action="Moscow">МОСКВА (голубой)</a>
-            </li>
-            <li class="context-menu__item">
-                <a href="#" class="context-menu__link" data-action="Regions">РЕГИОНЫ (темно-зеленый)</a>
-            </li>
-            <li class="context-menu__item">
-                <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
-            </li>
-            <li class="context-menu__item">
-                <a href="#" class="context-menu__link" data-action="Label">Пометка о приезде</a>
-            </li>
-            <li class="context-menu__item">
-                <a href="#" class="context-menu__link" data-action="Delay">Машина опаздывает</a>
-            </li>
-            <li class="context-menu__item">
-                <a href="#" class="context-menu__link" data-action="Gate">Указать предварительный номер ворот и
-                    кладовщика</a>
-            </li>
-        </ul>
-    </nav>
-    <script src="main.js"></script>
-    <script>
-        redrawTimeTable();
-        redrawYardTable();
-    </script>
-    <div class="modal" tabindex="-1" role="dialog" id="modal1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Заполните поля</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span>Укажите предварительный номер ворот:</span>
-                    <input type="text" id="gate">
-                    <span>Укажите кладовщика:</span>
-                    <input type="text" id="storekeeper">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-primary" id="apply" data-dismiss="modal" onClick="">Сохранить
-                    </button>
-                </div>
+<!--  Прописываем макет всплывающего меню -->
+<nav id="context-menu" class="context-menu">
+    <ul class="context-menu__items">
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Moscow">МОСКВА (голубой)</a>
+        </li>
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Regions">РЕГИОНЫ (темно-зеленый)</a>
+        </li>
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Pickup">САМОВЫВОЗ (желтый)</a>
+        </li>
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Label">Пометка о приезде</a>
+        </li>
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Delay">Машина опаздывает</a>
+        </li>
+        <li class="context-menu__item">
+            <a href="#" class="context-menu__link" data-action="Gate">Указать предварительный номер ворот и
+                кладовщика</a>
+        </li>
+    </ul>
+</nav>
+<script src="main.js"></script>
+<script>
+    redrawTimeTable();
+    redrawYardTable();
+</script>
+<div class="modal" tabindex="-1" role="dialog" id="modal1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Заполните поля</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        </div>
-    </div>
-    <div class="modal" tabindex="-1" role="dialog" id="modal2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Заполните поля</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span>Укажите кол-во загружаемых машин:</span>
-                    <input type="text" id="ps">
-                    <span>Укажите количество опоздавших машин:</span>
-                    <input type="text" id="pd">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="remove">Очистить</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Сохранить</button>
-                </div>
+            <div class="modal-body">
+                <span>Укажите предварительный номер ворот:</span>
+                <input type="text" id="gate">
+                <span>Укажите кладовщика:</span>
+                <input type="text" id="storekeeper">
             </div>
-        </div>
-    </div>
-    <!--    <script>input();</script>-->
-    <!--<button class="blink_on">Включить оповещение</button>-->
-    <!--<button class="blink_off">Выключить оповещение</button>-->
-    <!--<button class="show_popup pal_btn" rel="popup1">Добавить палет</button>-->
-    <!--<div class="overlay_popup"></div>-->
-
-    <script type="text/javascript">
-        $('.show_popup').click(function () { // Вызываем функцию по нажатию на кнопку
-            var popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
-            $(popup_id).show(); // Открываем окно
-            $('.overlay_popup').show(); // Открываем блок заднего фона
-        })
-        $('.overlay_popup').click(function () { // Обрабатываем клик по заднему фону
-            $('.overlay_popup, .popup').hide(); // Скрываем затемнённый задний фон и основное всплывающее окно
-        })
-    </script>
-    <div class="popup" id="popup1">
-        <div class="object">
-            <p>Manifest: </p>
-            <p><input type="text" id="Manifest"></p>
-            <p>DO: </p>
-            <p><input type="text" id="DO"></p>
-            <p>Клиент: </p>
-            <p><input type="text" id="Client"></p>
-            <p>Volume: </p>
-            <p><input type="text" id="Volume"></p>
-            <p>Время: </p>
-            <p><input type="text" id="Time"></p>
-            <p>Дата: </p>
-            <p><input type="text" id="Date"></p>
-            <button class="create" style="font-size: 50px; margin-left: 10px">Test</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="apply" data-dismiss="modal" onClick="">Сохранить
+                </button>
+            </div>
         </div>
     </div>
 </div>
-<div id="time-node"></div>
+<div class="modal" tabindex="-1" role="dialog" id="modal2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Заполните поля</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Укажите кол-во загружаемых машин:</span>
+                <input type="text" id="ps">
+                <span>Укажите количество опоздавших машин:</span>
+                <input type="text" id="pd">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="remove">Очистить</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modal3">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Создать палет</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span>Укажите кол-во загружаемых машин:</span>
+                <input type="text" id="ps">
+                <span>Укажите количество опоздавших машин:</span>
+                <input type="text" id="pd">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Очистить</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--    <script>input();</script>-->
+<!--<button class="blink_on">Включить оповещение</button>-->
+<!--<button class="blink_off">Выключить оповещение</button>-->
+<button class="show_popup pal_btn" rel="popup1">Добавить палет</button>
+<div class="overlay_popup"></div>
+
+<script type="text/javascript">
+    $('.show_popup').click(function () { // Вызываем функцию по нажатию на кнопку
+        var popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
+        $(popup_id).show(); // Открываем окно
+        $('.overlay_popup').show(); // Открываем блок заднего фона
+    })
+    $('.overlay_popup').click(function () { // Обрабатываем клик по заднему фону
+        $('.overlay_popup, .popup').hide(); // Скрываем затемнённый задний фон и основное всплывающее окно
+    })
+</script>
+<!--<div id="time-node"></div>-->
 <script>
     $('.create').click(function () {
-        $('#Manifest').attr('value');
+        let div = document.createElement('div');
+        div.classList.add("Truck");
+        div.id = "Truck_" + ID;
+        p = document.createElement("p");
+        p.classList.add("manifest");
+        if (manifest !== null) {
+            p.textContent = manifest;
+        }
+        document.getElementById(TruckID).appendChild(p);
     });
 </script>
-<script>
+<!--<script>
     let timeNode = document.getElementById('time-node');
 
     function getCurrentTimeString() {
@@ -210,7 +221,7 @@
         () => timeNode.innerHTML = getCurrentTimeString(),
         1000
     );
-</script>
+</script>-->
 <script>
     setInterval(function () {
         $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '0.0'}, 800);
@@ -218,6 +229,9 @@
             $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '1.0'}, 800);
         })
     });
+</script>
+<script>
+    $('#GI').has('.blinked').removeClass('blinking');
 </script>
 <script>remove();</script>
 

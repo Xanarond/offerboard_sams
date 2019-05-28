@@ -76,7 +76,6 @@ body {
     border: black 1px solid;
     text-align: center;
     width: 15em;
-    height: 6rem;
 }
 
 .yardTableData {
@@ -213,6 +212,9 @@ input:focus {
 textarea:focus {
 	border-color: #808080;
 	outline: none;
+}
+.blinked{
+    color: #ff0009;
 }
 /*Стили кнопок*/
 .blink_on{
