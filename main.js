@@ -12,19 +12,19 @@ function input() {
         let inp = document.getElementById('ps');
         let p1 = document.createElement("p");
         if (inp !== null) {
-            document.getElementById('pickingS').appendChild(p1);
             inp.oninput = function () {
                 p1.setAttribute("id", "result_ps");
                 p1.textContent = inp.value;
+                document.getElementById('pickingS').appendChild(p1);
             };
         }
         let inp2 = document.getElementById('pd');
         let p2 = document.createElement("p");
         if (inp2 !== null) {
-            document.getElementById('pickingD').appendChild(p2);
             inp2.oninput = function () {
                 p2.setAttribute("id", "result_pd");
                 p2.textContent = inp2.value;
+                document.getElementById('pickingD').appendChild(p2);
             };
         }
     });
@@ -58,6 +58,7 @@ function redrawTimeTable() {
     span.textContent = "OUT D/O";
     td.appendChild(span);
     tr.appendChild(td);
+
     // добавляем ячейки шапки
     for (let i = 1; i <= 24; i++) {
         td = document.createElement("td");
@@ -401,9 +402,9 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
 
     jQuery(function () {
         // There's the gallery and the trash
-        var $gallery = $(".Truck"),
+        let $gallery = $(".Truck"),
             $trash = $(".yardTableData");
-        var $blink;
+        let $blink;
         $blink = $(".Truck_waiting");
 
         // Let the gallery items be draggable
@@ -442,7 +443,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
         // Truck drug function
         function drugTruck($item, target) {
             $item.append().appendTo(target).fadeIn(function () {
-                if (target.id === "GI") ;
+                while (target.id === "GI") ;
             });
 
             $item.find("a.ui-icon-trash").remove();

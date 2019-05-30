@@ -25,12 +25,11 @@ function truckPopUpMenu() {
 
         if (el.classList.contains(className)) {
             return el;
-        } else {
-            while (el = el.parentNode) {
-                if (el.classList && el.classList.contains(className)) {
-                    taskItemInContextId = el.id;
-                    return el;
-                }
+        }
+        while (el = el.parentNode) {
+            if (el.classList && el.classList.contains(className)) {
+                taskItemInContextId = el.id;
+                return el;
             }
         }
 
