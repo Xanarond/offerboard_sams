@@ -5,7 +5,7 @@ const timeTable = document.querySelector("#timeTable");
 const yardTable = document.querySelector("#yardTable");
 
 //Модальное окно для Picking Status и Picking Delay
-function input() {
+function input_m2() {
     $('#pickingS, #pickingD').click(function () {
         $('#modal2').modal('show');
 
@@ -30,17 +30,37 @@ function input() {
     });
 }
 
-input();
+input_m2();
 
 // Удаление статусов в главной таблице
-function remove() {
+function remove_m2() {
     $("#remove").click(function () {
         $('p#result_ps').detach();
         $('p#result_pd').detach();
     });
 }
 
-remove();
+remove_m2();
+
+$('.pal_btn').click(function () {
+    $('#modal3').modal('show');
+    $('#save').click(function () {
+        let div = document.createElement("div");
+        div.classList.add("Truck");
+        let id = document.getElementById('num').value;
+        div.id = "Truck" + id;
+        let p1 = document.createElement("p");
+        let inp_man = document.getElementById('man');
+        if (inp_man !== null) {
+            inp_man.oninput = function () {
+                p1.classList.add('manifest');
+                p1.textContent = inp_man.value;
+                document.querySelector(".Truck").appendChild(p1);
+            };
+        }
+        document.querySelector("#OUTDO23").appendChild(div);
+    });
+});
 
 // чертим скелет 1 таблички - timeTable
 function redrawTimeTable() {
@@ -52,7 +72,7 @@ function redrawTimeTable() {
     // добавляем заглавную ячейку = "OUT D/O"
     let td = document.createElement("td");
     td.classList.add("timeTableHead");
-    td.rowSpan = "2";
+    td.rowSpan = 2;
     let span = document.createElement("span");
     span.classList.add("tableBold");
     span.textContent = "OUT D/O";
@@ -97,7 +117,7 @@ function redrawYardTable() {
         td = document.createElement("td");
         td.classList.add("yardTableHead");
         let span = document.createElement("span");
-        td.colSpan = "2";
+        td.colSpan = 2;
         span.classList.add("tableBold");
         span.textContent = "V-" + (59 - i);
         td.appendChild(span);
@@ -236,7 +256,7 @@ function redrawYardTable() {
     for (let i = 1; i <= 1; i++) {
         td = document.createElement("td");
         td.id = "GI";
-        td.colSpan = "58";
+        td.colSpan = 58;
 
         // внутрь кладем div
         let div;
@@ -260,8 +280,6 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     let TruckHour = TruckDate.getHours();
     let div = document.createElement("div");
     let currentTime = new Date().getHours();
-    let MblinkT = currentTime + 3;
-    let RblinkT = currentTime + 8;
 
     // eslint-disable-next-line no-console
     // console.log(currentTime, MblinkT, RblinkT, TruckHour);

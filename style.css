@@ -109,6 +109,16 @@ body {
     border: 2px solid black;
 }
 
+.Truck_hnd {
+    display: flex;
+    margin: 4px auto;
+    flex-direction: column;
+    font-size: 18px;
+    padding: 3px;
+    width: 14em;
+    background-color: white;
+    border: 2px solid black;
+}
 .manifest{
     font-weight: bold;
 }
@@ -232,25 +242,6 @@ textarea:focus {
     transition: .2s ease-in-out;
     /*font-size: 30px;*/
 }
-blink_on:before {
-    content: "";
-    background: linear-gradient(90deg, rgba(47, 83, 255, 0.1), rgba(93, 95, 255, 0.5));
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: -8px;
-    left: -75px;
-    transform: skewX(-45deg);
-}
-
-blink_on:hover {
-    background: #fe6637;
-    color: #fff;
-}
-blink_on:hover:before {
-    left: 150px;
-    transition: .5s ease-in-out;
-}
 
 .pal_btn{
   text-decoration: none;
@@ -266,60 +257,6 @@ blink_on:hover:before {
   color: #6060cf;
   transition: .2s ease-in-out;
   /*font-size: 30px;*/
-}
-pal_btn:before {
-    content: "";
-    background: linear-gradient(90deg, rgba(47, 83, 255, 0.1), rgba(93, 95, 255, 0.5));
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: -8px;
-    left: -75px;
-    transform: skewX(-45deg);
-}
-
-pal_btn:hover {
-    background: #fe6637;
-    color: #fff;
-}
-pal_btn:hover:before {
-    left: 150px;
-    transition: .5s ease-in-out;
-}
-
-.blink_off{
-    text-decoration: none;
-    outline: none;
-    display: inline-block;
-    padding: 10px 30px;
-    margin: 10px 20px;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #a2020e;
-    border-radius: 8px;
-    font-family: 'Montserrat', sans-serif;
-    color: #a2020e;
-    transition: .2s ease-in-out;
-    /*font-size: 30px;*/
-}
-blink_off:before {
-    content: "";
-    background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: -8px;
-    left: -75px;
-    transform: skewX(-45deg);
-}
-
-blink_off:hover {
-    background: #a2020e;
-    color: #fff;
-}
-blink_off:hover:before {
-    left: 150px;
-    transition: .5s ease-in-out;
 }
 
 /* Окно */

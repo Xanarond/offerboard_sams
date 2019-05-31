@@ -84,7 +84,7 @@
 </div>
 <div class="yardTable">
 </div>
-
+<button class="pal_btn" >Добавить палет</button>
 <!--  Прописываем макет всплывающего меню -->
 <nav id="context-menu" class="context-menu">
     <ul class="context-menu__items">
@@ -168,51 +168,31 @@
                 </button>
             </div>
             <div class="modal-body">
-                <span>Укажите кол-во загружаемых машин:</span>
-                <input type="text" id="ps">
-                <span>Укажите количество опоздавших машин:</span>
-                <input type="text" id="pd">
+                <span>Порядковый номер:</span>
+                <input type="text" id="num">
+                <span>Manifest:</span>
+                <input type="text" id="man">
+                <span>DO:</span>
+                <input type="text" id="do">
+                <span>Division:</span>
+                <input type="text" id="div">
+                <span>Client:</span>
+                <input type="text" id="clt">
+                <span>Volume:</span>
+                <input type="text" id="vol">
+                <span>Time:</span>
+                <input type="text" id="time">
+                <span>Date:</span>
+                <input type="text" id="date">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Очистить</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Сохранить</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="save">Сохранить</button>
             </div>
         </div>
     </div>
 </div>
-<!--    <script>input();</script>-->
-<!--<button class="blink_on">Включить оповещение</button>-->
-<!--<button class="blink_off">Выключить оповещение</button>-->
-<button class="show_popup pal_btn" rel="popup1">Добавить палет</button>
-<div class="overlay_popup"></div>
 
-<script type="text/javascript">
-    $('.show_popup').click(function () { // Вызываем функцию по нажатию на кнопку
-        let popup_id = $('#' + $(this).attr("rel")); // Связываем rel и popup_id
-        $(popup_id).show(); // Открываем окно
-        $('.overlay_popup').show(); // Открываем блок заднего фона
-    });
-    $('.overlay_popup').click(function () { // Обрабатываем клик по заднему фону
-        $('.overlay_popup, .popup').hide(); // Скрываем затемнённый задний фон и основное всплывающее окно
-    })
-</script>
-<!--<div id="time-node"></div>-->
-<script>
-    $('.create').click(function () {
-    });
-</script>
-<!--<script>
-    let timeNode = document.getElementById('time-node');
-
-    function getCurrentTimeString() {
-        return new Date().toTimeString().replace(/ .*/, '');
-    }
-
-    setInterval(
-        () => timeNode.innerHTML = getCurrentTimeString(),
-        1000
-    );
-</script>-->
 <script>
     setInterval(function () {
         $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '0.0'}, 800);
@@ -221,11 +201,7 @@
         })
     });
 </script>
-<script>
-    $('#GI').has('.blinked').removeClass('blinking');
-</script>
-<script>remove();</script>
-
+<script>remove_m2();</script>
 <script>
     const X = XLSX;
     let XW = {

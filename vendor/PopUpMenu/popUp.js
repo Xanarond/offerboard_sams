@@ -26,6 +26,7 @@ function truckPopUpMenu() {
         if (el.classList.contains(className)) {
             return el;
         }
+        // eslint-disable-next-line no-cond-assign
         while (el = el.parentNode) {
             if (el.classList && el.classList.contains(className)) {
                 taskItemInContextId = el.id;
@@ -160,6 +161,7 @@ function truckPopUpMenu() {
      * Window resize event listener
      */
     function resizeListener() {
+        // eslint-disable-next-line no-unused-vars
         window.onresize = function (e) {
             toggleMenuOff();
         };
@@ -247,7 +249,7 @@ function truckPopUpMenu() {
     /**
      * Dummy action function that logs an action when a menu item link is clicked
      *
-     * @param {HTMLElement} link The link that was clicked
+     * @param {Boolean} link The link that was clicked
      */
     function menuItemListener(link) {
         switch (link.getAttribute("data-action")) {
@@ -304,6 +306,5 @@ function truckPopUpMenu() {
             }
         }
     }
-
     init();
 }
