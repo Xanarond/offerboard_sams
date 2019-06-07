@@ -9,24 +9,32 @@ function input_m2() {
     $('#pickingS, #pickingD').click(function () {
         $('#modal2').modal('show');
 
-        let inp = document.getElementById('ps');
-        let p1 = document.createElement("p");
-        if (inp !== null) {
-            inp.oninput = function () {
-                p1.setAttribute("id", "result_ps");
-                p1.textContent = inp.value;
-                document.getElementById('pickingS').appendChild(p1);
-            };
+        function ps_inp() {
+            let inp = document.getElementById('ps');
+            let span1 = document.createElement("span");
+            if (inp !== null) {
+                inp.oninput = function () {
+                    span1.setAttribute("id", "result_ps");
+                    span1.textContent = inp.value;
+                    document.getElementById('pickingS').appendChild(span1);
+                };
+            }
         }
-        let inp2 = document.getElementById('pd');
-        let p2 = document.createElement("p");
-        if (inp2 !== null) {
-            inp2.oninput = function () {
-                p2.setAttribute("id", "result_pd");
-                p2.textContent = inp2.value;
-                document.getElementById('pickingD').appendChild(p2);
-            };
+
+        function pd_inp() {
+            let inp2 = document.getElementById('pd');
+            let span2 = document.createElement("span");
+            if (inp2 !== null) {
+                inp2.oninput = function () {
+                    span2.setAttribute("id", "result_pd");
+                    span2.textContent = inp2.value;
+                    document.getElementById('pickingD').appendChild(span2);
+                };
+            }
         }
+
+        ps_inp();
+        pd_inp();
     });
 }
 
@@ -35,8 +43,8 @@ input_m2();
 // Удаление статусов в главной таблице
 function remove_m2() {
     $("#remove").click(function () {
-        $('p#result_ps').detach();
-        $('p#result_pd').detach();
+        $('span#result_ps').detach();
+        $('span#result_pd').detach();
     });
 }
 
@@ -44,23 +52,102 @@ remove_m2();
 
 $('.pal_btn').click(function () {
     $('#modal3').modal('show');
-    $('#save').click(function () {
-        let div = document.createElement("div");
-        div.classList.add("Truck");
-        let id = document.getElementById('num').value;
-        div.id = "Truck" + id;
-        let p1 = document.createElement("p");
-        let inp_man = document.getElementById('man');
-        if (inp_man !== null) {
-            inp_man.oninput = function () {
-                p1.classList.add('manifest');
-                p1.textContent = inp_man.value;
-                document.querySelector(".Truck").appendChild(p1);
-            };
-        }
-        document.querySelector("#OUTDO23").appendChild(div);
-    });
 });
+
+
+/*РУЧНОЙ ВВОД ДАННЫХ ДЛЯ ПАЛЕТ*/
+
+// eslint-disable-next-line no-unused-vars
+function truck_input() {
+    $('#save').click(function (truck) {
+        truck = document.createElement("div");
+        truck.classList.add('Truck');
+        let id = document.getElementById('num').value;
+        truck.id = "Truck" + id;
+        document.querySelector('#OUTDO23').appendChild(truck);
+
+
+        function man_inp(man) {
+            let inp_man = document.getElementById('man');
+            man = document.createElement("p");
+            man.classList.add('manifest');
+            man.textContent = inp_man.value;
+            man.id = "man" + id;
+            document.getElementById(truck.id).appendChild(man);
+        }
+
+        man_inp();
+
+        function do_inp(DO) {
+            let inp_do = document.getElementById('do');
+            DO = document.createElement("p");
+            DO.classList.add('DO');
+            DO.textContent = "DO:" + inp_do.value;
+            DO.id = 'do' + id;
+            document.getElementById(truck.id).appendChild(DO);
+        }
+
+        do_inp();
+
+        function div_inp(div) {
+            let inp_div = document.getElementById('div');
+            div = document.createElement("p");
+            div.classList.add('division');
+            div.textContent = "Division:" + inp_div.value;
+            div.id = 'do' + id;
+            document.getElementById(truck.id).appendChild(div);
+        }
+
+        div_inp();
+
+        function client_inp(client) {
+            let inp_client = document.getElementById('clt');
+            client = document.createElement("p");
+            client.classList.add('do');
+            client.textContent = "Client:" + inp_client.value;
+            client.id = 'client' + id;
+            document.getElementById(truck.id).appendChild(client);
+        }
+
+        client_inp();
+
+        function vol_inp(volume) {
+            let inp_volume = document.getElementById('vol');
+            volume = document.createElement("p");
+            volume.classList.add('volume');
+            volume.textContent = "Volume:" + inp_volume.value;
+            volume.id = 'volume' + id;
+            document.getElementById(truck.id).appendChild(volume);
+        }
+
+        vol_inp();
+
+        function last_row(time, date) {
+            let inp_time = document.getElementById('time');
+            time = document.createElement("p");
+            time.classList.add('time');
+            time.textContent = inp_time.value;
+            time.id = 'volume' + id;
+            document.getElementById(truck.id).appendChild(time);
+
+            let inp_date = document.getElementById('date');
+            date = document.createElement("p");
+            date.classList.add('date');
+            date.textContent = inp_date.value;
+            date.id = 'volume' + id;
+            document.getElementById(truck.id).appendChild(date);
+
+            let lr = document.createElement('div');
+            lr.classList.add('lastRow');
+            truck.appendChild(lr);
+            lr.appendChild(time);
+            lr.appendChild(date);
+        }
+
+        last_row();
+    })
+
+}
 
 // чертим скелет 1 таблички - timeTable
 function redrawTimeTable() {
@@ -281,10 +368,8 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     let div = document.createElement("div");
     let currentTime = new Date().getHours();
 
-    // eslint-disable-next-line no-console
-    // console.log(currentTime, MblinkT, RblinkT, TruckHour);
-    // eslint-disable-next-line no-console
-    //  console.log(totalVolume, totalTrucks, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume);
+    /*console.log(currentTime, MblinkT, RblinkT, TruckHour);
+    console.log(totalVolume, totalTrucks, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume);*/
 
     div.classList.add("Truck");
     div.id = "Truck_" + ID;
@@ -356,7 +441,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     // Мигание через определенный период
     let timing = (currentTime >= TruckHour);
     if (timing === true) {
-        console.log(timing, TruckID, TruckHour + 'часов', currentTime + 'часов');
+        // console.log(timing, TruckID, TruckHour + 'часов', currentTime + 'часов');
         let p2 = document.createElement('p');
         p2.classList.add("blinked");
         document.getElementById(TruckID).appendChild(p2);
@@ -418,7 +503,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     divpv.classList.add("PV");
     divpv.textContent = pickupVolume;
 
-    jQuery(function () {
+    jQuery(function drag_truck () {
         // There's the gallery and the trash
         let $gallery = $(".Truck"),
             $trash = $(".yardTableData");

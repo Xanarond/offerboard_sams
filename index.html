@@ -84,7 +84,7 @@
 </div>
 <div class="yardTable">
 </div>
-<button class="pal_btn" >Добавить палет</button>
+<button class="pal_btn">Добавить палет</button>
 <!--  Прописываем макет всплывающего меню -->
 <nav id="context-menu" class="context-menu">
     <ul class="context-menu__items">
@@ -192,13 +192,18 @@
         </div>
     </div>
 </div>
-
+<script>truck_input();</script>
 <script>
     setInterval(function () {
         $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '0.0'}, 800);
         setTimeout(function () {
             $(".Truck_waiting").has('.Truck').addClass("blinking").animate({opacity: '1.0'}, 800);
         })
+    });
+</script>
+<script>
+    setInterval(function () {
+        $("#Truck").has('#GI').addClass("done").css({"backgroundColor": "#4D4848"});
     });
 </script>
 <script>remove_m2();</script>
