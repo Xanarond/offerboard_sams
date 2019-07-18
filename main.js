@@ -1,5 +1,3 @@
-"use strict";
-
 // КОНСТАНТЫ
 const timeTable = document.querySelector("#timeTable");
 const yardTable = document.querySelector("#yardTable");
@@ -206,6 +204,7 @@ function redrawYardTable() {
         let span = document.createElement("span");
         td.colSpan = 2;
         span.classList.add("tableBold");
+        $(".yardTableHead").attr('id', 'col_' + (59 - 1));
         span.textContent = "V-" + (59 - i);
         td.appendChild(span);
         tr.appendChild(td);
@@ -226,7 +225,7 @@ function redrawYardTable() {
     for (let i = 1; i <= 58; i++) {
         td = document.createElement("td");
         td.classList.add("yardTableData");
-        td.id = "Pick Start" + (59 - i);
+        td.id = "Pick_Start" + (59 - i);
         tr.appendChild(td);
     }
 
@@ -361,7 +360,7 @@ redrawYardTable();
 // Добавляет информацию по грузовику в таблицу OUT DO
 
 
-function addTruck(ID, division, DO, manifest, client, volume, time, date, totalTrucks, totalVolume, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume) {
+function addTruck(ID, division, DO, manifest, client, volume, time, date, totalTrucks, releaseTrucks, totalVolume, moscowTrucks, moscowVolume, regionTrucks, regionVolume, pickupTrucks, pickupVolume, cur_date) {
 
     let TruckDate = new Date((date - 25569) * 24 * 60 * 60 * 1000 + time * 24 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000);
     let TruckHour = TruckDate.getHours();
@@ -446,14 +445,12 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
         p2.classList.add("blinked");
         document.getElementById(TruckID).appendChild(p2);
         p2.textContent = "ПОГРУЗКА ОПАЗДЫВАЕТ!";
-        setInterval(function () {
+        setInterval(() => {
             $('.blinked').addClass("blinking").animate({opacity: '0.0'}, 800);
-            setTimeout(function () {
+            setTimeout(() => {
                 $('.blinked').addClass("blinking").animate({opacity: '1.0'}, 800);
             })
         });
-    } else {
-        console.log(timing, TruckID, TruckHour + 'часов', currentTime + 'часов');
     }
 
     // Задание полей для таблицы Total Table
@@ -462,6 +459,10 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     divtt.classList.add("TT");
     divtt.textContent = totalTrucks;
 
+    let divrelt = document.createElement("div");
+    document.querySelector("#releaseT").appendChild(divrelt);
+    divrelt.classList.add("RT");
+    divrelt.textContent = releaseTrucks;
 
     let divtv = document.createElement("div");
     document.querySelector("#totalV").appendChild(divtv);
@@ -503,7 +504,12 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     divpv.classList.add("PV");
     divpv.textContent = pickupVolume;
 
-    jQuery(function drag_truck () {
+    let spancd = document.createElement("span");
+    document.querySelector("#cd").appendChild(spancd);
+    spancd.classList.add("CD");
+    spancd.textContent = cur_date;
+
+    jQuery(() => {
         // There's the gallery and the trash
         let $gallery = $(".Truck"),
             $trash = $(".yardTableData");

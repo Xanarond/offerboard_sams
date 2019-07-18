@@ -1,22 +1,26 @@
 body {
-background-color: lightslategrey;
+    background-color: lightslategrey;
+    /*width: 3840px;*/
 }
 
-.logo{
+.logo {
     background: #b3a9c2;
 }
 
-.row{
-  background-color: lightslategrey;
+.row {
+    background-color: lightslategrey;
 }
-.labeled{
+
+.labeled {
     font-size: 10px;
     color: #ff0009;
 }
+
 #timeTable {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    table-layout: fixed;
 }
 
 .timeTableHead {
@@ -28,7 +32,8 @@ background-color: lightslategrey;
     border: black 1px solid;
     text-align: center;
 }
-#time-node{
+
+#time-node {
     padding: 15px;
     background: #212121;
     color: #ffffff;
@@ -44,57 +49,69 @@ background-color: lightslategrey;
 .timeTable {
     margin: 5px 10px 30px 10px;
 }
+
 .timeTableData {
     height: 8rem;
     vertical-align: top;
 }
 
 #yardTable {
+    table-layout: fixed;
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 #totalTable {
     margin: 15px 10px 30px 10px;
 }
+
 #totalTable td {
     border: black 1px solid;
     text-align: center;
 }
-#pickingS{
+
+#pickingS {
     text-align: center;
     font-weight: bold;
     font-size: 10px;
 }
-#pickingD{
+
+#pickingD {
     text-align: center;
     font-weight: bold;
     font-size: 10px;
 }
+
 .yardTableHead {
     /*height: 1.5rem;*/
     background-color: #999999;
 }
 
 #yardTable td {
+    table-layout: fixed;
     border: black 1px solid;
     text-align: center;
     width: 15em;
 }
 
-.yardTableData {
+.yardTableData:not(.GITruckWrapper) {
     height: 6rem;
     width: 3.4%;
 }
-.totalTableHead{
+
+.totalTableHead {
     background-color: #999999;
 }
-.totalTableData{
+
+.totalTableData {
     height: 6rem;
     /*font-size: 30px;*/
 }
-.title{
+
+.title {
     color: #ffffff;
 }
+
 .tableBold {
     font-weight: bold;
     letter-spacing: 0.08em;
@@ -103,14 +120,11 @@ background-color: lightslategrey;
 
 .Truck {
     display: flex;
-    margin: 4px auto;
     flex-direction: column;
     font-size: 9px;
     padding: 3px;
-    width: 14em;
     background-color: white;
     border: 2px solid black;
-    background-color: #fff;
     font-weight: bold;
 }
 
@@ -124,16 +138,20 @@ background-color: lightslategrey;
     background-color: white;
     border: 2px solid black;
 }
-.manifest{
+
+.Truck_waiting {
+    height: 6em;
+}
+
+.manifest {
     font-weight: bold;
 }
 
 .Truck:hover {
- border: 2px solid greenyellow !important;
- background-color: black !important;
- color: greenyellow !important;
- cursor: pointer;
-
+    border: 2px solid greenyellow !important;
+    background-color: black !important;
+    color: greenyellow !important;
+    cursor: pointer;
 }
 
 .Truck p {
@@ -157,9 +175,10 @@ background-color: lightslategrey;
     margin: 0 0 0 2px !important;
 }
 
-.manifest{
+.manifest {
     font-weight: bold;
 }
+
 .firstRow {
     display: flex;
     flex-direction: row;
@@ -190,7 +209,7 @@ background-color: lightslategrey;
     font-size: 10px;
 }
 
-#fileDropReceiver{
+#fileDropReceiver {
     border: 2px solid #ffffff;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -203,36 +222,39 @@ background-color: lightslategrey;
 }
 
 textarea {
-	width: 100%;
-	resize: none;
+    width: 100%;
+    resize: none;
 }
+
 input, textarea {
-	color: #494949;
+    color: #494949;
     border: 1px solid #e3e3e3;
     border-radius: 3px;
     background: #fff;
     font-size: 14px;
     margin: 0 0 10px;
-	padding: 5px;
+    padding: 5px;
     width: 100%;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	line-height: 1.5;
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
 }
 
 input:focus {
-	border-color: #808080;
-	outline: none;
+    border-color: #808080;
+    outline: none;
 }
 
 textarea:focus {
-	border-color: #808080;
-	outline: none;
+    border-color: #808080;
+    outline: none;
 }
-.blinked{
+
+.blinked {
     color: #ff0009;
 }
+
 /*Стили кнопок*/
-.blink_on{
+.blink_on {
     text-decoration: none;
     outline: none;
     display: inline-block;
@@ -248,61 +270,65 @@ textarea:focus {
     /*font-size: 30px;*/
 }
 
-.pal_btn{
-  text-decoration: none;
-  outline: none;
-  display: inline-block;
-  padding: 10px 30px;
-  margin: 10px 20px;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #6060cf;
-  border-radius: 8px;
-  font-family: 'Montserrat', sans-serif;
-  color: #6060cf;
-  transition: .2s ease-in-out;
-  /*font-size: 30px;*/
+.pal_btn {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #6060cf;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: #6060cf;
+    transition: .2s ease-in-out;
+    /*font-size: 30px;*/
 }
 
 /* Окно */
 
 .overlay_popup {
-	display:none;
-	position:fixed;
-	z-index: 999;
-	top:0;
-	right:0;
-	left:0;
-	bottom:0;
-	background:#000;
-	opacity:0.5;
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.5;
 }
 
 .popup {
-	display: none;
-	position: absolute;
-	z-index: 1000;
-	margin:0 50% 0 50%;
-	width:50%;
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    margin: 0 50% 0 50%;
+    width: 50%;
 }
 
 /* Ещё немного стилей для popup окна */
 
-.object{
-	width: 500px;
-	height: 600px;
-	background-color: #eee;
-	padding: 50px 70px;
+.object {
+    width: 500px;
+    height: 600px;
+    background-color: #eee;
+    padding: 50px 70px;
 }
 
 /*Адаптив*/
 @media (max-width: 450px) {
-    #fileDropReceiver {display: none;}
-    #timeTable{
+    #fileDropReceiver {
+        display: none;
+    }
+
+    #timeTable {
         width: auto;
         font-size: 14px;
     }
-    .timeTable{
+
+    .timeTable {
         font-size: 14px;
         width: auto;
     }

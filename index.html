@@ -37,11 +37,15 @@
     </div>
 </nav>
 <div class="row justify-content-center">
+    <h2 id="cd"></h2>
+</div>
+<div class="row justify-content-center">
     <div class="col-md-5">
         <div class="totalTable">
             <table id="totalTable">
                 <tr>
                     <td class="totalTableHead"><span class="tableBold">Total Trucks</span></td>
+                    <td class="totalTableHead"><span class="tableBold">Released Trucks</span></td>
                     <td class="totalTableHead"><span class="tableBold">Total Volume</span></td>
                     <td class="totalTableHead"><span class="tableBold">Moscow Trucks</span></td>
                     <td class="totalTableHead"><span class="tableBold">Moscow Volume</span></td>
@@ -54,6 +58,7 @@
                 </tr>
                 <tr>
                     <td class="totalTableData" id="totalT"></td>
+                    <td class="totalTableData" id="releaseT"></td>
                     <td class="totalTableData" id="totalV"></td>
                     <td class="totalTableData" id="moscowT"></td>
                     <td class="totalTableData" id="moscowV"></td>
@@ -202,9 +207,10 @@
     });
 </script>
 <script>
-    setInterval(function () {
-        $("#Truck").has('#GI').addClass("done").css({"backgroundColor": "#4D4848"});
-    });
+        // $("#GI").has('#Truck').addClass("done").css({"backgroundColor": "#4D4848"});
+</script>
+<script>
+    $('td#Pick_Start58').has('.Truck').css({"backgroundColor": "#4d0001"});
 </script>
 <script>remove_m2();</script>
 <script>
@@ -269,7 +275,7 @@
                         // console.log(item);
                         // ВЫВОД объекта div truck поля в таблице образца
                         addTruck(item[0], item[7], item[1], item[2], item[3], item[4], item[5], item[6],
-                            item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15]);
+                            item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15], item[16], item[17]);
                     }
                 });
             if (typeof console !== 'undefined') console.log("Попытка обработки файла ", new Date());
