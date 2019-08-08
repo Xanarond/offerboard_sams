@@ -9,7 +9,7 @@ var win = null;
 function createWindow() {
 	if(win) return;
 	win = new electron.BrowserWindow({width:800, height:600});
-	win.loadURL("file://" + __dirname + "/index.html");
+	win.loadURL("file://" + __dirname + "/index.php");
 	win.webContents.openDevTools();
 	win.on('closed', function() { win = null; });
 }

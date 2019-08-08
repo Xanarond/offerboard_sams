@@ -147,6 +147,22 @@ function truck_input() {
 
 }
 
+
+function gate_blink() {
+    if ($('#Pick_Start58').has('.Truck')) {
+        setTimeout(function () {
+            setInterval(function () {
+                $("td#table_head58").animate({backgroundColor: "#a2020e"})
+                    .animate({backgroundColor: "#ffffff"})
+                    .animate({backgroundColor: "#a2020e"})
+                    .animate({backgroundColor: "#ffffff"})
+            }, 500)
+        }, 300);
+    }
+}
+
+gate_blink();
+
 // чертим скелет 1 таблички - timeTable
 function redrawTimeTable() {
     // удаляем все содержание тега таблицы timeTable
@@ -204,7 +220,7 @@ function redrawYardTable() {
         let span = document.createElement("span");
         td.colSpan = 2;
         span.classList.add("tableBold");
-        $(".yardTableHead").attr('id', 'col_' + (59 - 1));
+        td.id = "table_head" + (59 - i);
         span.textContent = "V-" + (59 - i);
         td.appendChild(span);
         tr.appendChild(td);
@@ -388,7 +404,7 @@ function addTruck(ID, division, DO, manifest, client, volume, time, date, totalT
     // div.id = ID + "idFirstRow";
     // div.classList.add("firstRow");
     // document.getElementById(TruckID).appendChild(div);
-
+ 
 
     /*p.classList.add("TruckID");
     p.textContent = "№ " + ID;

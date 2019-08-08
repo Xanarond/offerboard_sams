@@ -24,7 +24,9 @@
     <script src="vendor/PopUpMenu/popUp.js"></script>
 
 </head>
-
+<?php
+require_once "php/con_db.php";
+?>
 <body>
 
 <nav class="navbar navbar-dark logo">
@@ -56,23 +58,50 @@
                     <td class="totalTableHead"><span class="tableBold">Picking Finished</span></td>
                     <td class="totalTableHead"><span class="tableBold">Picking Delay</span></td>
                 </tr>
-                <tr>
-                    <td class="totalTableData" id="totalT"></td>
-                    <td class="totalTableData" id="releaseT"></td>
-                    <td class="totalTableData" id="totalV"></td>
-                    <td class="totalTableData" id="moscowT"></td>
-                    <td class="totalTableData" id="moscowV"></td>
-                    <td class="totalTableData" id="regionT"></td>
-                    <td class="totalTableData" id="regionV"></td>
-                    <td class="totalTableData" id="pickupT"></td>
-                    <td class="totalTableData" id="pickupV"></td>
-                    <td class="totalTableData" id="pickingS"></td>
-                    <td class="totalTableData" id="pickingD"></td>
-                </tr>
+                <?php
+                $rows = mysqli_num_rows($result);
+                $row = mysqli_fetch_row($result);
+                for ($i = 1; $i < $rows; ++$i) {
+                    $row = mysqli_fetch_row($result);
+                    echo "<tr>";
+                    echo
+                    "<td class=\"totalTableData\" id=\"totalT\"><span class='TT'>$row[0]</span></td>
+                    <td class=\"totalTableData\" id=\"releaseT\"><span class='RT'>$row[1]</span></td>
+                    <td class=\"totalTableData\" id=\"totalV\"><span class='TV'>$row[2]</span></td>
+                    <td class=\"totalTableData\" id=\"moscowT\"><span class='MT'>$row[3]</span></td>
+                    <td class=\"totalTableData\" id=\"moscowV\"><span class='MV'>$row[4]</span></td>
+                    <td class=\"totalTableData\" id=\"regionT\"><span class='RT'>$row[5]</span></td>
+                    <td class=\"totalTableData\" id=\"regionV\"><span class='RV'>$row[6]</span></td>
+                    <td class=\"totalTableData\" id=\"pickupT\"><span class='PT'>$row[7]</span></td>
+                    <td class=\"totalTableData\" id=\"pickupV\"><span class='PV'>$row[8]</span></td>
+                    <td class=\"totalTableData\" id=\"pickingS\"></td>
+                    <td class=\"totalTableData\" id=\"pickingD\"></td>";
+                    echo "</tr>";
+                }
+                ?>
             </table>
         </div>
     </div>
 </div>
+<table> <?php
+    $rows = mysqli_num_rows($result2);
+    for ($i = 1; $i < $rows; ++$i) {
+        $row = mysqli_fetch_row($result2);
+        for ($j = 0; $j < 8; ++$j)
+            echo "<td><div id='Truck_' class='Truck'>
+                <p class='manifest'>$row[2]</p>
+                <p class='DO'> DO: $row[1]</p>
+                <p class='division'>$row[7]</p>
+                <p class='client'>$row[3]</p>
+                <p class='volume'>$row[4]</p>
+                <div class='lastRow'>
+                <p class='time'>$row[5]</p>
+                <p class='date'>$row[6]</p>
+                </div> 
+                </div>
+               </td>";
+    }
+    ?></table>
 <div class="row justify-content-center">
     <div class="col-md-10">
         <div class="timeTable">
@@ -89,6 +118,65 @@
 </div>
 <div class="yardTable">
 </div>
+<script>
+    let TruckDate = new Date((date - 25569) * 24 * 60 * 60 * 1000 + time * 24 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000);
+    let TruckHour = TruckDate.getHours();
+    let div = document.createElement("div");
+    let currentTime = new Date().getHours();
+    div.id = "Truck_" + ID;
+</script>
+<script>
+    jQuery(() => {
+        // There's the gallery and the trash
+        let $gallery = $(".Truck"),
+            $trash = $(".yardTableData");
+        let $blink;
+        $blink = $(".Truck_waiting");
+
+        // Let the gallery items be draggable
+        $gallery.draggable({
+            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+            revert: "invalid", // when not dropped, the item will revert back to its initial position
+            //containment: "document",
+            helper: "clone",
+            cursor: "move",
+            cursorAt: {top: 48, left: 55},
+            opacity: 0.35,
+            //iframeFix: true
+        });
+
+        // Let the trash be droppable, accepting the gallery items
+        $trash.droppable({
+            accept: ".Truck",
+            classes: {
+                "ui-droppable-active": "ui-state-highlight"
+            },
+            drop: function (event, ui) {
+                drugTruck(ui.draggable, event.target);
+            }
+        });
+
+        $blink.droppable({
+            accept: ".Truck",
+            classes: {
+                "ui-droppable-active": "ui-state-highlight"
+            },
+            drop: function (event, ui) {
+                drugTruck(ui.draggable, event.target);
+            }
+        });
+
+        // Truck drug function
+        function drugTruck($item, target) {
+            $item.append().appendTo(target).fadeIn(function () {
+                while (target.id === "GI") ;
+            });
+
+            $item.find("a.ui-icon-trash").remove();
+            // console.log(target.id);
+        }
+    });
+</script>
 <button class="pal_btn">Добавить палет</button>
 <!--  Прописываем макет всплывающего меню -->
 <nav id="context-menu" class="context-menu">
@@ -207,7 +295,7 @@
     });
 </script>
 <script>
-        // $("#GI").has('#Truck').addClass("done").css({"backgroundColor": "#4D4848"});
+    // $("#GI").has('#Truck').addClass("done").css({"backgroundColor": "#4D4848"});
 </script>
 <script>
     $('td#Pick_Start58').has('.Truck').css({"backgroundColor": "#4d0001"});
@@ -225,7 +313,6 @@
     let global_wb;
 
     const process_wb = (function () {
-        // var OUT = document.getElementById('out');
         let OUT;
         let HTMLOUT = document.getElementById('htmlout');
 
